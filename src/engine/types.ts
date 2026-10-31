@@ -1,7 +1,7 @@
-import type { MatrixContent } from './matrix/model';
-import type { NumberAnalogyContent, SeriesContent } from './numeric/model';
-import type { SpatialContent } from './spatial/model';
-import type { VerbalContent } from './verbal/model';
+import type { MatrixContent } from './matrix/model.js';
+import type { NumberAnalogyContent, SeriesContent } from './numeric/model.js';
+import type { SpatialContent } from './spatial/model.js';
+import type { VerbalContent } from './verbal/model.js';
 
 export type Area = 'pattern' | 'numerical' | 'spatial' | 'verbal';
 export const AREAS: readonly Area[] = ['pattern', 'numerical', 'spatial', 'verbal'];
@@ -27,7 +27,7 @@ export interface IrtParams {
  * A complete item, including its answer. Server-side only: send `toPublicItem(item)` to clients.
  * `content` must contain everything the client needs to display the item and nothing more.
  */
-export interface Item<Content = unknown> {
+export interface Item<Content = ItemContent> {
   key: string;
   area: Area;
   difficulty: Difficulty;

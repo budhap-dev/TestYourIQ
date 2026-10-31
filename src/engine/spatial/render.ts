@@ -1,6 +1,6 @@
-import type { SvgNode } from '../svg';
-import type { Cells } from './model';
-import { normalize, size } from './polyomino';
+import type { SvgNode } from '../svg.js';
+import type { Cells } from './model.js';
+import { normalize, size } from './polyomino.js';
 
 /**
  * Renders a shape of unit squares on a 100×100 canvas, centred, at a scale shared by every

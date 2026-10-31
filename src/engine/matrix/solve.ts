@@ -1,4 +1,4 @@
-import type { AttrInfo } from './model';
+import type { AttrInfo } from './model.js';
 
 /**
  * Every value the missing cell (bottom right) could take for one attribute, under any rule a

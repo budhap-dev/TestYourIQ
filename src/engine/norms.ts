@@ -1,4 +1,4 @@
-import type { Track } from './types';
+import type { Track } from './types.js';
 
 /**
  * Age bands and the population mean/SD of θ in each. The seed values below are clearly marked

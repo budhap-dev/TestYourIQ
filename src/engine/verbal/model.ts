@@ -13,4 +13,4 @@ export type VerbalContent =
       options: string[];
     };
 
-export type { Track } from '../types';
+export type { Track } from '../types.js';
