@@ -4,6 +4,10 @@ import type { SpatialContent } from './spatial/model';
 import type { VerbalContent } from './verbal/model';
 
 export type Area = 'pattern' | 'numerical' | 'spatial' | 'verbal';
+export const AREAS: readonly Area[] = ['pattern', 'numerical', 'spatial', 'verbal'];
+
+/** Junior: ages 8–15. Adult: 16 and over. */
+export type Track = 'junior' | 'adult';
 
 /** Difficulty bands, 1 (easiest) to 5 (hardest). */
 export type Difficulty = 1 | 2 | 3 | 4 | 5;
