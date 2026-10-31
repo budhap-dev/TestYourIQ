@@ -31,7 +31,8 @@ function getDeps(): Deps {
   let store: Store;
   if (databaseUrl()) {
     store = new PgStore();
-  } else if (isProduction()) {
+  } else if (isProduction() && process.env.ALLOW_MEMORY_STORE !== '1') {
+    // ALLOW_MEMORY_STORE=1 is only for running a production build locally (e2e tests).
     throw new Error('DATABASE_URL must be set in production.');
   } else {
     console.warn(
