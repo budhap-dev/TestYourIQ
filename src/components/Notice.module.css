@@ -1,0 +1,26 @@
+.notice {
+  display: grid;
+  grid-template-columns: auto 1fr;
+  gap: var(--space-3);
+  padding: var(--space-4) var(--space-5);
+  border-radius: var(--radius-md);
+  background: var(--notice-bg);
+  color: var(--notice-text);
+  font-size: var(--text-sm);
+}
+
+.neutral {
+  background: var(--surface-sunken);
+  color: var(--text);
+}
+
+.icon {
+  width: 1.25rem;
+  height: 1.25rem;
+  margin-top: 0.1rem;
+}
+
+.title {
+  font-weight: 600;
+  margin-bottom: var(--space-1);
+}
