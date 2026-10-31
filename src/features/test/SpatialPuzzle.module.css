@@ -1,0 +1,48 @@
+.puzzle {
+  display: grid;
+  gap: var(--space-6);
+  align-items: center;
+}
+
+@media (min-width: 52rem) {
+  .puzzle {
+    grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
+    gap: var(--space-7);
+  }
+}
+
+.targetWrap {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: var(--space-4);
+}
+
+.target {
+  width: min(14rem, 60vw);
+  aspect-ratio: 1;
+  padding: var(--space-4);
+  border-radius: var(--radius-lg);
+  background: var(--surface-sunken);
+  color: var(--text);
+}
+
+.target svg {
+  width: 100%;
+  height: 100%;
+}
+
+.mirror {
+  align-self: stretch;
+  width: 0;
+  border-left: 3px dashed var(--accent);
+  margin: var(--space-3) 0;
+}
+
+.mirrorLabel {
+  writing-mode: vertical-rl;
+  font-size: var(--text-xs);
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--accent);
+}

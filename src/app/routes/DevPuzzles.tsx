@@ -1,9 +1,10 @@
 import { useMemo, useState } from 'react';
 import { Button } from '../../components/Button';
-import { checkAnswer } from '../../engine/generators';
-import { generateMatrix } from '../../engine/matrix/generate';
-import { DIFFICULTIES, type Difficulty } from '../../engine/types';
-import { MatrixPuzzle } from '../../features/test/MatrixPuzzle';
+import { GENERATORS, checkAnswer } from '../../engine/generators';
+import { DIFFICULTIES, type Difficulty, type Item, type ItemContent } from '../../engine/types';
+import { VERBAL_BANK, verbalItem } from '../../engine/verbal/bank';
+import type { Track } from '../../engine/verbal/model';
+import { ItemView } from '../../features/test/ItemView';
 import { useDocumentTitle } from '../useDocumentTitle';
 import pageStyles from './Page.module.css';
 import styles from './DevPuzzles.module.css';
@@ -11,24 +12,54 @@ import styles from './DevPuzzles.module.css';
 /** Development-only workbench for inspecting generated items. Not included in production builds. */
 export function DevPuzzles() {
   useDocumentTitle('Puzzle workbench');
+  const [source, setSource] = useState('matrix');
   const [difficulty, setDifficulty] = useState<Difficulty>(3);
   const [seed, setSeed] = useState(12345);
   const [selected, setSelected] = useState<number | null>(null);
   const [reveal, setReveal] = useState(false);
 
-  const item = useMemo(() => generateMatrix(seed, difficulty), [seed, difficulty]);
+  const item = useMemo(() => {
+    if (source.startsWith('verbal-')) {
+      const bank = VERBAL_BANK[source.slice(7) as Track];
+      return verbalItem(bank[seed % bank.length]?.id ?? '') as Item<ItemContent>;
+    }
+    return (GENERATORS[source] ?? GENERATORS.matrix)?.generate(
+      seed,
+      difficulty,
+    ) as Item<ItemContent>;
+  }, [source, seed, difficulty]);
+  const isBank = source.startsWith('verbal-');
   const reset = () => setSelected(null);
 
   return (
     <div>
       <h1 className={pageStyles.title}>Puzzle workbench</h1>
-      <p className={pageStyles.lede}>Pattern matrices · dev only</p>
+      <p className={pageStyles.lede}>Every generator and the verbal bank · dev only</p>
 
       <div className={styles.controls} style={{ marginTop: 'var(--space-5)' }}>
         <label className={styles.field}>
+          Item type
+          <select
+            value={source}
+            onChange={(e) => {
+              setSource(e.target.value);
+              reset();
+            }}
+          >
+            {Object.keys(GENERATORS).map((id) => (
+              <option key={id} value={id}>
+                {id}
+              </option>
+            ))}
+            <option value="verbal-adult">verbal (adult bank)</option>
+            <option value="verbal-junior">verbal (junior bank)</option>
+          </select>
+        </label>
+        <label className={styles.field}>
           Difficulty
           <select
-            value={difficulty}
+            disabled={isBank}
+            value={isBank ? item.difficulty : difficulty}
             onChange={(e) => {
               setDifficulty(Number(e.target.value) as Difficulty);
               reset();
@@ -42,7 +73,7 @@ export function DevPuzzles() {
           </select>
         </label>
         <label className={styles.field}>
-          Seed
+          {isBank ? 'Item number' : 'Seed'}
           <input
             type="number"
             min={0}
@@ -68,7 +99,7 @@ export function DevPuzzles() {
         </label>
       </div>
 
-      <MatrixPuzzle
+      <ItemView
         content={item.content}
         selected={selected}
         onSelect={setSelected}

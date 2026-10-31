@@ -1,3 +1,8 @@
+import type { MatrixContent } from './matrix/model';
+import type { NumberAnalogyContent, SeriesContent } from './numeric/model';
+import type { SpatialContent } from './spatial/model';
+import type { VerbalContent } from './verbal/model';
+
 export type Area = 'pattern' | 'numerical' | 'spatial' | 'verbal';
 
 /** Difficulty bands, 1 (easiest) to 5 (hardest). */
@@ -31,7 +36,11 @@ export interface Item<Content = unknown> {
   explanation: string;
 }
 
-export interface PublicItem<Content = unknown> {
+/** Everything an item can show. Discriminated by `kind`. */
+export type ItemContent =
+  MatrixContent | SeriesContent | NumberAnalogyContent | SpatialContent | VerbalContent;
+
+export interface PublicItem<Content = ItemContent> {
   area: Area;
   content: Content;
   optionCount: number;

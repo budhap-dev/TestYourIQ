@@ -15,6 +15,7 @@
     "noFallthroughCasesInSwitch": true,
     "exactOptionalPropertyTypes": true,
     "verbatimModuleSyntax": true,
+    "resolveJsonModule": true,
     "isolatedModules": true,
     "allowImportingTsExtensions": true,
     "skipLibCheck": true,

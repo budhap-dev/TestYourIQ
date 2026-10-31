@@ -1,0 +1,1458 @@
+[
+  {
+    "id": "a-an-001",
+    "type": "analogy",
+    "difficulty": 1,
+    "stem": ["glove", "hand", "sock"],
+    "answer": "foot",
+    "distractors": ["shoe", "leg", "wool"]
+  },
+  {
+    "id": "a-an-002",
+    "type": "analogy",
+    "difficulty": 2,
+    "stem": ["author", "novel", "composer"],
+    "answer": "symphony",
+    "distractors": ["orchestra", "piano", "conductor"]
+  },
+  {
+    "id": "a-an-003",
+    "type": "analogy",
+    "difficulty": 2,
+    "stem": ["thermometer", "temperature", "barometer"],
+    "answer": "pressure",
+    "distractors": ["weather", "rain", "altitude"]
+  },
+  {
+    "id": "a-an-004",
+    "type": "analogy",
+    "difficulty": 2,
+    "stem": ["drought", "water", "famine"],
+    "answer": "food",
+    "distractors": ["hunger", "crop", "thirst"]
+  },
+  {
+    "id": "a-an-005",
+    "type": "analogy",
+    "difficulty": 2,
+    "stem": ["sculptor", "chisel", "painter"],
+    "answer": "brush",
+    "distractors": ["canvas", "easel", "colour"]
+  },
+  {
+    "id": "a-an-006",
+    "type": "analogy",
+    "difficulty": 2,
+    "stem": ["whisper", "shout", "drizzle"],
+    "answer": "downpour",
+    "distractors": ["rain", "cloud", "puddle"]
+  },
+  {
+    "id": "a-an-007",
+    "type": "analogy",
+    "difficulty": 2,
+    "stem": ["chapter", "book", "scene"],
+    "answer": "play",
+    "distractors": ["actor", "stage", "curtain"]
+  },
+  {
+    "id": "a-an-008",
+    "type": "analogy",
+    "difficulty": 2,
+    "stem": ["hungry", "ravenous", "tired"],
+    "answer": "exhausted",
+    "distractors": ["sleepy", "rested", "weak"]
+  },
+  {
+    "id": "a-an-009",
+    "type": "analogy",
+    "difficulty": 1,
+    "stem": ["kilogram", "mass", "litre"],
+    "answer": "volume",
+    "distractors": ["water", "weight", "length"]
+  },
+  {
+    "id": "a-an-010",
+    "type": "analogy",
+    "difficulty": 2,
+    "stem": ["telescope", "distant", "microscope"],
+    "answer": "tiny",
+    "distractors": ["lens", "science", "bright"]
+  },
+  {
+    "id": "a-an-011",
+    "type": "analogy",
+    "difficulty": 1,
+    "stem": ["ignite", "extinguish", "inflate"],
+    "answer": "deflate",
+    "distractors": ["expand", "burst", "pump"]
+  },
+  {
+    "id": "a-an-012",
+    "type": "analogy",
+    "difficulty": 2,
+    "stem": ["novice", "expert", "apprentice"],
+    "answer": "master",
+    "distractors": ["student", "beginner", "tool"]
+  },
+  {
+    "id": "a-an-013",
+    "type": "analogy",
+    "difficulty": 1,
+    "stem": ["caterpillar", "butterfly", "tadpole"],
+    "answer": "frog",
+    "distractors": ["fish", "pond", "lily"]
+  },
+  {
+    "id": "a-an-014",
+    "type": "analogy",
+    "difficulty": 2,
+    "stem": ["oasis", "desert", "island"],
+    "answer": "sea",
+    "distractors": ["beach", "palm", "ship"]
+  },
+  {
+    "id": "a-an-015",
+    "type": "analogy",
+    "difficulty": 3,
+    "stem": ["meticulous", "careless", "generous"],
+    "answer": "mean",
+    "distractors": ["kind", "wealthy", "giving"]
+  },
+  {
+    "id": "a-an-016",
+    "type": "analogy",
+    "difficulty": 1,
+    "stem": ["archive", "documents", "library"],
+    "answer": "books",
+    "distractors": ["shelves", "reading", "quiet"]
+  },
+  {
+    "id": "a-an-017",
+    "type": "analogy",
+    "difficulty": 1,
+    "stem": ["pen", "write", "knife"],
+    "answer": "cut",
+    "distractors": ["sharp", "fork", "kitchen"]
+  },
+  {
+    "id": "a-an-018",
+    "type": "analogy",
+    "difficulty": 4,
+    "stem": ["ephemeral", "lasting", "scarce"],
+    "answer": "plentiful",
+    "distractors": ["rare", "valuable", "empty"]
+  },
+  {
+    "id": "a-an-019",
+    "type": "analogy",
+    "difficulty": 3,
+    "stem": ["prologue", "epilogue", "dawn"],
+    "answer": "dusk",
+    "distractors": ["sunrise", "noon", "morning"]
+  },
+  {
+    "id": "a-an-020",
+    "type": "analogy",
+    "difficulty": 2,
+    "stem": ["conductor", "orchestra", "captain"],
+    "answer": "crew",
+    "distractors": ["sea", "uniform", "harbour"]
+  },
+  {
+    "id": "a-an-021",
+    "type": "analogy",
+    "difficulty": 1,
+    "stem": ["sapling", "tree", "foal"],
+    "answer": "horse",
+    "distractors": ["stable", "saddle", "hay"]
+  },
+  {
+    "id": "a-an-022",
+    "type": "analogy",
+    "difficulty": 3,
+    "stem": ["quill", "feather", "candle"],
+    "answer": "wax",
+    "distractors": ["flame", "light", "match"]
+  },
+  {
+    "id": "a-an-023",
+    "type": "analogy",
+    "difficulty": 2,
+    "stem": ["lock", "key", "problem"],
+    "answer": "solution",
+    "distractors": ["question", "difficulty", "error"]
+  },
+  {
+    "id": "a-an-024",
+    "type": "analogy",
+    "difficulty": 3,
+    "stem": ["eloquent", "speech", "graceful"],
+    "answer": "movement",
+    "distractors": ["beauty", "silence", "style"]
+  },
+  {
+    "id": "a-an-025",
+    "type": "analogy",
+    "difficulty": 4,
+    "stem": ["cartographer", "maps", "lexicographer"],
+    "answer": "dictionaries",
+    "distractors": ["languages", "letters", "grammar"]
+  },
+  {
+    "id": "a-an-026",
+    "type": "analogy",
+    "difficulty": 4,
+    "stem": ["benevolent", "kindness", "malevolent"],
+    "answer": "malice",
+    "distractors": ["anger", "power", "fear"]
+  },
+  {
+    "id": "a-an-027",
+    "type": "analogy",
+    "difficulty": 2,
+    "stem": ["inch", "foot", "minute"],
+    "answer": "hour",
+    "distractors": ["second", "clock", "day"]
+  },
+  {
+    "id": "a-an-028",
+    "type": "analogy",
+    "difficulty": 1,
+    "stem": ["sparse", "dense", "shallow"],
+    "answer": "deep",
+    "distractors": ["narrow", "water", "thin"]
+  },
+  {
+    "id": "a-an-029",
+    "type": "analogy",
+    "difficulty": 2,
+    "stem": ["verdict", "jury", "diagnosis"],
+    "answer": "doctor",
+    "distractors": ["patient", "illness", "hospital"]
+  },
+  {
+    "id": "a-an-030",
+    "type": "analogy",
+    "difficulty": 3,
+    "stem": ["reservoir", "water", "granary"],
+    "answer": "grain",
+    "distractors": ["flour", "bread", "farm"]
+  },
+  {
+    "id": "a-an-031",
+    "type": "analogy",
+    "difficulty": 1,
+    "stem": ["herbivore", "plants", "carnivore"],
+    "answer": "meat",
+    "distractors": ["teeth", "hunter", "lion"]
+  },
+  {
+    "id": "a-an-032",
+    "type": "analogy",
+    "difficulty": 2,
+    "stem": ["obsolete", "current", "ancient"],
+    "answer": "modern",
+    "distractors": ["old", "historic", "ruin"]
+  },
+  {
+    "id": "a-an-033",
+    "type": "analogy",
+    "difficulty": 3,
+    "stem": ["rudder", "direction", "brake"],
+    "answer": "speed",
+    "distractors": ["car", "wheel", "pedal"]
+  },
+  {
+    "id": "a-an-034",
+    "type": "analogy",
+    "difficulty": 1,
+    "stem": ["evaporate", "vapour", "freeze"],
+    "answer": "ice",
+    "distractors": ["cold", "water", "winter"]
+  },
+  {
+    "id": "a-an-035",
+    "type": "analogy",
+    "difficulty": 4,
+    "stem": ["prescient", "future", "nostalgic"],
+    "answer": "past",
+    "distractors": ["memory", "present", "home"]
+  },
+  {
+    "id": "a-an-036",
+    "type": "analogy",
+    "difficulty": 1,
+    "stem": ["mason", "stone", "carpenter"],
+    "answer": "wood",
+    "distractors": ["hammer", "house", "nail"]
+  },
+  {
+    "id": "a-an-037",
+    "type": "analogy",
+    "difficulty": 2,
+    "stem": ["orchard", "fruit", "vineyard"],
+    "answer": "grapes",
+    "distractors": ["wine", "farm", "bottle"]
+  },
+  {
+    "id": "a-an-038",
+    "type": "analogy",
+    "difficulty": 2,
+    "stem": ["bark", "tree", "skin"],
+    "answer": "body",
+    "distractors": ["hair", "bone", "face"]
+  },
+  {
+    "id": "a-an-039",
+    "type": "analogy",
+    "difficulty": 3,
+    "stem": ["ally", "enemy", "harmony"],
+    "answer": "discord",
+    "distractors": ["music", "peace", "song"]
+  },
+  {
+    "id": "a-an-040",
+    "type": "analogy",
+    "difficulty": 5,
+    "stem": ["frugal", "spend", "taciturn"],
+    "answer": "speak",
+    "distractors": ["listen", "think", "write"]
+  },
+  {
+    "id": "a-an-041",
+    "type": "analogy",
+    "difficulty": 2,
+    "stem": ["infant", "adult", "bud"],
+    "answer": "flower",
+    "distractors": ["stem", "leaf", "root"]
+  },
+  {
+    "id": "a-an-042",
+    "type": "analogy",
+    "difficulty": 2,
+    "stem": ["inaudible", "hear", "invisible"],
+    "answer": "see",
+    "distractors": ["blind", "light", "touch"]
+  },
+  {
+    "id": "a-an-043",
+    "type": "analogy",
+    "difficulty": 2,
+    "stem": ["arid", "moisture", "dark"],
+    "answer": "light",
+    "distractors": ["night", "shadow", "colour"]
+  },
+  {
+    "id": "a-an-044",
+    "type": "analogy",
+    "difficulty": 4,
+    "stem": ["abundant", "scant", "verbose"],
+    "answer": "concise",
+    "distractors": ["wordy", "clear", "spoken"]
+  },
+  {
+    "id": "a-an-045",
+    "type": "analogy",
+    "difficulty": 1,
+    "stem": ["fin", "fish", "wing"],
+    "answer": "bird",
+    "distractors": ["feather", "sky", "flight"]
+  },
+  {
+    "id": "a-an-046",
+    "type": "analogy",
+    "difficulty": 3,
+    "stem": ["predator", "prey", "parasite"],
+    "answer": "host",
+    "distractors": ["insect", "disease", "blood"]
+  },
+  {
+    "id": "a-an-047",
+    "type": "analogy",
+    "difficulty": 2,
+    "stem": ["judge", "courtroom", "referee"],
+    "answer": "pitch",
+    "distractors": ["whistle", "rules", "player"]
+  },
+  {
+    "id": "a-an-048",
+    "type": "analogy",
+    "difficulty": 2,
+    "stem": ["brittle", "break", "flexible"],
+    "answer": "bend",
+    "distractors": ["snap", "stiff", "strong"]
+  },
+  {
+    "id": "a-an-049",
+    "type": "analogy",
+    "difficulty": 3,
+    "stem": ["linger", "hurry", "hoard"],
+    "answer": "spend",
+    "distractors": ["save", "collect", "keep"]
+  },
+  {
+    "id": "a-an-050",
+    "type": "analogy",
+    "difficulty": 1,
+    "stem": ["scales", "weight", "ruler"],
+    "answer": "length",
+    "distractors": ["inch", "measure", "straight"]
+  },
+  {
+    "id": "a-an-051",
+    "type": "analogy",
+    "difficulty": 2,
+    "stem": ["canine", "dog", "feline"],
+    "answer": "cat",
+    "distractors": ["mouse", "whisker", "pet"]
+  },
+  {
+    "id": "a-an-052",
+    "type": "analogy",
+    "difficulty": 4,
+    "stem": ["stanza", "poem", "movement"],
+    "answer": "symphony",
+    "distractors": ["dance", "music", "tempo"]
+  },
+  {
+    "id": "a-an-053",
+    "type": "analogy",
+    "difficulty": 4,
+    "stem": ["nocturnal", "night", "diurnal"],
+    "answer": "day",
+    "distractors": ["dawn", "sun", "owl"]
+  },
+  {
+    "id": "a-an-054",
+    "type": "analogy",
+    "difficulty": 4,
+    "stem": ["wane", "moon", "ebb"],
+    "answer": "tide",
+    "distractors": ["sea", "wave", "river"]
+  },
+  {
+    "id": "a-an-055",
+    "type": "analogy",
+    "difficulty": 3,
+    "stem": ["calm", "tranquil", "angry"],
+    "answer": "irate",
+    "distractors": ["sad", "quiet", "peaceful"]
+  },
+  {
+    "id": "a-an-056",
+    "type": "analogy",
+    "difficulty": 1,
+    "stem": ["hunger", "eat", "thirst"],
+    "answer": "drink",
+    "distractors": ["water", "dry", "sleep"]
+  },
+  {
+    "id": "a-an-057",
+    "type": "analogy",
+    "difficulty": 2,
+    "stem": ["feather", "light", "lead"],
+    "answer": "heavy",
+    "distractors": ["metal", "pencil", "grey"]
+  },
+  {
+    "id": "a-an-058",
+    "type": "analogy",
+    "difficulty": 4,
+    "stem": ["architect", "blueprint", "composer"],
+    "answer": "score",
+    "distractors": ["song", "piano", "concert"]
+  },
+  {
+    "id": "a-an-059",
+    "type": "analogy",
+    "difficulty": 2,
+    "stem": ["sheep", "flock", "fish"],
+    "answer": "shoal",
+    "distractors": ["sea", "net", "scale"]
+  },
+  {
+    "id": "a-an-060",
+    "type": "analogy",
+    "difficulty": 2,
+    "stem": ["coin", "mint", "car"],
+    "answer": "factory",
+    "distractors": ["road", "driver", "garage"]
+  },
+  {
+    "id": "a-an-061",
+    "type": "analogy",
+    "difficulty": 3,
+    "stem": ["punctual", "lateness", "honest"],
+    "answer": "deceit",
+    "distractors": ["truth", "trust", "friend"]
+  },
+  {
+    "id": "a-an-062",
+    "type": "analogy",
+    "difficulty": 3,
+    "stem": ["torrent", "trickle", "blaze"],
+    "answer": "flicker",
+    "distractors": ["fire", "smoke", "ash"]
+  },
+  {
+    "id": "a-an-063",
+    "type": "analogy",
+    "difficulty": 1,
+    "stem": ["pilot", "cockpit", "chef"],
+    "answer": "kitchen",
+    "distractors": ["food", "restaurant", "knife"]
+  },
+  {
+    "id": "a-an-064",
+    "type": "analogy",
+    "difficulty": 3,
+    "stem": ["map", "territory", "portrait"],
+    "answer": "person",
+    "distractors": ["frame", "artist", "paint"]
+  },
+  {
+    "id": "a-an-065",
+    "type": "analogy",
+    "difficulty": 1,
+    "stem": ["compass", "direction", "clock"],
+    "answer": "time",
+    "distractors": ["hour", "alarm", "wall"]
+  },
+  {
+    "id": "a-an-066",
+    "type": "analogy",
+    "difficulty": 1,
+    "stem": ["snake", "slither", "kangaroo"],
+    "answer": "hop",
+    "distractors": ["run", "pouch", "swim"]
+  },
+  {
+    "id": "a-an-067",
+    "type": "analogy",
+    "difficulty": 1,
+    "stem": ["pupil", "teacher", "patient"],
+    "answer": "doctor",
+    "distractors": ["hospital", "medicine", "illness"]
+  },
+  {
+    "id": "a-an-068",
+    "type": "analogy",
+    "difficulty": 2,
+    "stem": ["arrogant", "humble", "timid"],
+    "answer": "bold",
+    "distractors": ["shy", "fearful", "loud"]
+  },
+  {
+    "id": "a-an-069",
+    "type": "analogy",
+    "difficulty": 4,
+    "stem": ["preface", "book", "overture"],
+    "answer": "opera",
+    "distractors": ["orchestra", "finale", "curtain"]
+  },
+  {
+    "id": "a-an-070",
+    "type": "analogy",
+    "difficulty": 4,
+    "stem": ["stagnant", "flowing", "dormant"],
+    "answer": "active",
+    "distractors": ["sleeping", "volcano", "still"]
+  },
+  {
+    "id": "a-an-071",
+    "type": "analogy",
+    "difficulty": 1,
+    "stem": ["hoof", "horse", "paw"],
+    "answer": "dog",
+    "distractors": ["fur", "nail", "bone"]
+  },
+  {
+    "id": "a-an-072",
+    "type": "analogy",
+    "difficulty": 2,
+    "stem": ["cello", "string", "trumpet"],
+    "answer": "brass",
+    "distractors": ["music", "jazz", "loud"]
+  },
+  {
+    "id": "a-an-073",
+    "type": "analogy",
+    "difficulty": 5,
+    "stem": ["laconic", "words", "frugal"],
+    "answer": "money",
+    "distractors": ["speech", "time", "praise"]
+  },
+  {
+    "id": "a-an-074",
+    "type": "analogy",
+    "difficulty": 4,
+    "stem": ["garrulous", "talk", "gluttonous"],
+    "answer": "eat",
+    "distractors": ["sleep", "cook", "hunger"]
+  },
+  {
+    "id": "a-an-075",
+    "type": "analogy",
+    "difficulty": 5,
+    "stem": ["insipid", "flavour", "monotonous"],
+    "answer": "variety",
+    "distractors": ["sound", "length", "boredom"]
+  },
+  {
+    "id": "a-an-076",
+    "type": "analogy",
+    "difficulty": 3,
+    "stem": ["amnesia", "memory", "insomnia"],
+    "answer": "sleep",
+    "distractors": ["dream", "night", "illness"]
+  },
+  {
+    "id": "a-an-077",
+    "type": "analogy",
+    "difficulty": 4,
+    "stem": ["iconoclast", "tradition", "rebel"],
+    "answer": "authority",
+    "distractors": ["freedom", "protest", "cause"]
+  },
+  {
+    "id": "a-an-078",
+    "type": "analogy",
+    "difficulty": 3,
+    "stem": ["anaesthetic", "pain", "antidote"],
+    "answer": "poison",
+    "distractors": ["cure", "doctor", "bottle"]
+  },
+  {
+    "id": "a-an-079",
+    "type": "analogy",
+    "difficulty": 4,
+    "stem": ["bibliophile", "books", "cinephile"],
+    "answer": "films",
+    "distractors": ["actors", "popcorn", "tickets"]
+  },
+  {
+    "id": "a-an-080",
+    "type": "analogy",
+    "difficulty": 3,
+    "stem": ["parched", "thirst", "famished"],
+    "answer": "hunger",
+    "distractors": ["food", "meal", "tired"]
+  },
+  {
+    "id": "a-an-081",
+    "type": "analogy",
+    "difficulty": 4,
+    "stem": ["ornithologist", "birds", "entomologist"],
+    "answer": "insects",
+    "distractors": ["words", "fossils", "plants"]
+  },
+  {
+    "id": "a-an-082",
+    "type": "analogy",
+    "difficulty": 4,
+    "stem": ["nadir", "zenith", "trough"],
+    "answer": "peak",
+    "distractors": ["wave", "valley", "low"]
+  },
+  {
+    "id": "a-an-083",
+    "type": "analogy",
+    "difficulty": 4,
+    "stem": ["penitent", "remorse", "indignant"],
+    "answer": "anger",
+    "distractors": ["guilt", "joy", "fear"]
+  },
+  {
+    "id": "a-an-084",
+    "type": "analogy",
+    "difficulty": 5,
+    "stem": ["sanguine", "optimism", "morose"],
+    "answer": "gloom",
+    "distractors": ["hope", "blood", "anger"]
+  },
+  {
+    "id": "a-an-085",
+    "type": "analogy",
+    "difficulty": 3,
+    "stem": ["acquit", "convict", "praise"],
+    "answer": "criticise",
+    "distractors": ["admire", "reward", "speak"]
+  },
+  {
+    "id": "a-an-086",
+    "type": "analogy",
+    "difficulty": 5,
+    "stem": ["saturated", "absorb", "satiated"],
+    "answer": "eat",
+    "distractors": ["sleep", "cook", "hunger"]
+  },
+  {
+    "id": "a-an-087",
+    "type": "analogy",
+    "difficulty": 3,
+    "stem": ["sedative", "calm", "stimulant"],
+    "answer": "alert",
+    "distractors": ["sleep", "drug", "heart"]
+  },
+  {
+    "id": "a-an-088",
+    "type": "analogy",
+    "difficulty": 4,
+    "stem": ["apiary", "bees", "aviary"],
+    "answer": "birds",
+    "distractors": ["planes", "apes", "fish"]
+  },
+  {
+    "id": "a-an-089",
+    "type": "analogy",
+    "difficulty": 4,
+    "stem": ["equine", "horse", "bovine"],
+    "answer": "cow",
+    "distractors": ["sheep", "pig", "goat"]
+  },
+  {
+    "id": "a-an-090",
+    "type": "analogy",
+    "difficulty": 4,
+    "stem": ["embargo", "trade", "curfew"],
+    "answer": "movement",
+    "distractors": ["night", "police", "war"]
+  },
+  {
+    "id": "a-an-091",
+    "type": "analogy",
+    "difficulty": 3,
+    "stem": ["premise", "conclusion", "cause"],
+    "answer": "effect",
+    "distractors": ["reason", "blame", "start"]
+  },
+  {
+    "id": "a-an-092",
+    "type": "analogy",
+    "difficulty": 4,
+    "stem": ["heresy", "religion", "treason"],
+    "answer": "country",
+    "distractors": ["crime", "law", "prison"]
+  },
+  {
+    "id": "a-an-093",
+    "type": "analogy",
+    "difficulty": 1,
+    "stem": ["library", "books", "wardrobe"],
+    "answer": "clothes",
+    "distractors": ["wood", "bedroom", "hanger"]
+  },
+  {
+    "id": "a-an-094",
+    "type": "analogy",
+    "difficulty": 2,
+    "stem": ["rain", "umbrella", "sun"],
+    "answer": "sunscreen",
+    "distractors": ["heat", "summer", "beach"]
+  },
+  {
+    "id": "a-an-095",
+    "type": "analogy",
+    "difficulty": 1,
+    "stem": ["teacher", "school", "nurse"],
+    "answer": "hospital",
+    "distractors": ["patient", "medicine", "uniform"]
+  },
+  {
+    "id": "a-an-096",
+    "type": "analogy",
+    "difficulty": 2,
+    "stem": ["shoe", "lace", "coat"],
+    "answer": "button",
+    "distractors": ["sleeve", "pocket", "collar"]
+  },
+  {
+    "id": "a-an-097",
+    "type": "analogy",
+    "difficulty": 1,
+    "stem": ["cow", "milk", "hen"],
+    "answer": "eggs",
+    "distractors": ["feathers", "farm", "chick"]
+  },
+  {
+    "id": "a-an-098",
+    "type": "analogy",
+    "difficulty": 2,
+    "stem": ["needle", "thread", "pen"],
+    "answer": "ink",
+    "distractors": ["paper", "write", "nib"]
+  },
+  {
+    "id": "a-an-099",
+    "type": "analogy",
+    "difficulty": 1,
+    "stem": ["key", "piano", "string"],
+    "answer": "guitar",
+    "distractors": ["music", "note", "pick"]
+  },
+  {
+    "id": "a-an-100",
+    "type": "analogy",
+    "difficulty": 1,
+    "stem": ["bread", "baker", "meat"],
+    "answer": "butcher",
+    "distractors": ["knife", "beef", "shop"]
+  },
+  {
+    "id": "a-an-101",
+    "type": "analogy",
+    "difficulty": 2,
+    "stem": ["loud", "noise", "bright"],
+    "answer": "light",
+    "distractors": ["dark", "shadow", "glass"]
+  },
+  {
+    "id": "a-an-102",
+    "type": "analogy",
+    "difficulty": 1,
+    "stem": ["begin", "end", "arrive"],
+    "answer": "depart",
+    "distractors": ["stay", "reach", "travel"]
+  },
+  {
+    "id": "a-an-103",
+    "type": "analogy",
+    "difficulty": 2,
+    "stem": ["conductor", "baton", "referee"],
+    "answer": "whistle",
+    "distractors": ["pitch", "team", "goal"]
+  },
+  {
+    "id": "a-an-104",
+    "type": "analogy",
+    "difficulty": 3,
+    "stem": ["tailor", "suit", "blacksmith"],
+    "answer": "horseshoe",
+    "distractors": ["anvil", "fire", "hammer"]
+  },
+  {
+    "id": "a-an-105",
+    "type": "analogy",
+    "difficulty": 2,
+    "stem": ["gill", "fish", "lung"],
+    "answer": "human",
+    "distractors": ["air", "breath", "chest"]
+  },
+  {
+    "id": "a-an-106",
+    "type": "analogy",
+    "difficulty": 2,
+    "stem": ["hour", "clock", "date"],
+    "answer": "calendar",
+    "distractors": ["year", "time", "watch"]
+  },
+  {
+    "id": "a-oo-001",
+    "type": "odd-one-out",
+    "difficulty": 1,
+    "answer": "bat",
+    "others": ["sparrow", "robin", "thrush", "wren"],
+    "reason": "the others are birds"
+  },
+  {
+    "id": "a-oo-002",
+    "type": "odd-one-out",
+    "difficulty": 1,
+    "answer": "marble",
+    "others": ["copper", "iron", "silver", "zinc"],
+    "reason": "the others are metals"
+  },
+  {
+    "id": "a-oo-003",
+    "type": "odd-one-out",
+    "difficulty": 1,
+    "answer": "Moon",
+    "others": ["Mercury", "Venus", "Mars", "Jupiter"],
+    "reason": "the others are planets"
+  },
+  {
+    "id": "a-oo-004",
+    "type": "odd-one-out",
+    "difficulty": 1,
+    "answer": "trumpet",
+    "others": ["violin", "cello", "viola", "double bass"],
+    "reason": "the others are string instruments"
+  },
+  {
+    "id": "a-oo-005",
+    "type": "odd-one-out",
+    "difficulty": 1,
+    "answer": "circle",
+    "others": ["square", "triangle", "rectangle", "pentagon"],
+    "reason": "the others have straight sides"
+  },
+  {
+    "id": "a-oo-006",
+    "type": "odd-one-out",
+    "difficulty": 1,
+    "answer": "gloomy",
+    "others": ["happy", "cheerful", "joyful", "content"],
+    "reason": "the others describe good moods"
+  },
+  {
+    "id": "a-oo-007",
+    "type": "odd-one-out",
+    "difficulty": 1,
+    "answer": "sluggish",
+    "others": ["rapid", "swift", "quick", "hasty"],
+    "reason": "the others mean fast"
+  },
+  {
+    "id": "a-oo-008",
+    "type": "odd-one-out",
+    "difficulty": 1,
+    "answer": "fern",
+    "others": ["oak", "ash", "elm", "beech"],
+    "reason": "the others are trees"
+  },
+  {
+    "id": "a-oo-009",
+    "type": "odd-one-out",
+    "difficulty": 2,
+    "answer": "Sydney",
+    "others": ["Paris", "Rome", "Madrid", "Berlin"],
+    "reason": "the others are capital cities"
+  },
+  {
+    "id": "a-oo-010",
+    "type": "odd-one-out",
+    "difficulty": 1,
+    "answer": "litre",
+    "others": ["inch", "foot", "yard", "mile"],
+    "reason": "the others measure length"
+  },
+  {
+    "id": "a-oo-011",
+    "type": "odd-one-out",
+    "difficulty": 2,
+    "answer": "ignore",
+    "others": ["ponder", "consider", "contemplate", "reflect"],
+    "reason": "the others mean think about"
+  },
+  {
+    "id": "a-oo-012",
+    "type": "odd-one-out",
+    "difficulty": 3,
+    "answer": "meagre",
+    "others": ["ample", "plentiful", "abundant", "copious"],
+    "reason": "the others mean a lot"
+  },
+  {
+    "id": "a-oo-013",
+    "type": "odd-one-out",
+    "difficulty": 2,
+    "answer": "cube",
+    "others": ["hexagon", "octagon", "pentagon", "decagon"],
+    "reason": "the others are flat shapes"
+  },
+  {
+    "id": "a-oo-014",
+    "type": "odd-one-out",
+    "difficulty": 3,
+    "answer": "novel",
+    "others": ["sonnet", "haiku", "limerick", "ode"],
+    "reason": "the others are kinds of poem"
+  },
+  {
+    "id": "a-oo-015",
+    "type": "odd-one-out",
+    "difficulty": 3,
+    "answer": "fog",
+    "others": ["rain", "snow", "sleet", "hail"],
+    "reason": "the others fall from the sky"
+  },
+  {
+    "id": "a-oo-016",
+    "type": "odd-one-out",
+    "difficulty": 2,
+    "answer": "potato",
+    "others": ["wheat", "barley", "oats", "rye"],
+    "reason": "the others are cereal grains"
+  },
+  {
+    "id": "a-oo-017",
+    "type": "odd-one-out",
+    "difficulty": 2,
+    "answer": "reckless",
+    "others": ["cautious", "wary", "prudent", "careful"],
+    "reason": "the others mean taking care"
+  },
+  {
+    "id": "a-oo-018",
+    "type": "odd-one-out",
+    "difficulty": 1,
+    "answer": "whale",
+    "others": ["trout", "salmon", "cod", "haddock"],
+    "reason": "the others are fish"
+  },
+  {
+    "id": "a-oo-019",
+    "type": "odd-one-out",
+    "difficulty": 3,
+    "answer": "azure",
+    "others": ["crimson", "scarlet", "ruby", "vermilion"],
+    "reason": "the others are shades of red"
+  },
+  {
+    "id": "a-oo-020",
+    "type": "odd-one-out",
+    "difficulty": 2,
+    "answer": "nail",
+    "others": ["hammer", "screwdriver", "wrench", "saw"],
+    "reason": "the others are tools"
+  },
+  {
+    "id": "a-oo-021",
+    "type": "odd-one-out",
+    "difficulty": 2,
+    "answer": "plunge",
+    "others": ["ascend", "rise", "climb", "mount"],
+    "reason": "the others mean go up"
+  },
+  {
+    "id": "a-oo-022",
+    "type": "odd-one-out",
+    "difficulty": 3,
+    "answer": "verbose",
+    "others": ["brief", "concise", "succinct", "terse"],
+    "reason": "the others mean using few words"
+  },
+  {
+    "id": "a-oo-023",
+    "type": "odd-one-out",
+    "difficulty": 4,
+    "answer": "idle",
+    "others": ["diligent", "industrious", "hard-working", "assiduous"],
+    "reason": "the others mean working hard"
+  },
+  {
+    "id": "a-oo-024",
+    "type": "odd-one-out",
+    "difficulty": 2,
+    "answer": "mare",
+    "others": ["kitten", "puppy", "calf", "foal"],
+    "reason": "the others are young animals"
+  },
+  {
+    "id": "a-oo-025",
+    "type": "odd-one-out",
+    "difficulty": 2,
+    "answer": "yoghurt",
+    "others": ["cheddar", "brie", "stilton", "camembert"],
+    "reason": "the others are cheeses"
+  },
+  {
+    "id": "a-oo-026",
+    "type": "odd-one-out",
+    "difficulty": 3,
+    "answer": "toxic",
+    "others": ["benign", "harmless", "innocuous", "gentle"],
+    "reason": "the others mean not harmful"
+  },
+  {
+    "id": "a-oo-027",
+    "type": "odd-one-out",
+    "difficulty": 3,
+    "answer": "telescope",
+    "others": ["thermometer", "barometer", "ruler", "scales"],
+    "reason": "the others are used to measure"
+  },
+  {
+    "id": "a-oo-028",
+    "type": "odd-one-out",
+    "difficulty": 1,
+    "answer": "wolf",
+    "others": ["lion", "tiger", "leopard", "cheetah"],
+    "reason": "the others are big cats"
+  },
+  {
+    "id": "a-oo-029",
+    "type": "odd-one-out",
+    "difficulty": 4,
+    "answer": "perpetual",
+    "others": ["ephemeral", "fleeting", "transient", "momentary"],
+    "reason": "the others mean short-lived"
+  },
+  {
+    "id": "a-oo-030",
+    "type": "odd-one-out",
+    "difficulty": 4,
+    "answer": "despondent",
+    "others": ["elated", "ecstatic", "jubilant", "euphoric"],
+    "reason": "the others mean very happy"
+  },
+  {
+    "id": "a-oo-031",
+    "type": "odd-one-out",
+    "difficulty": 2,
+    "answer": "wool",
+    "others": ["beef", "pork", "lamb", "venison"],
+    "reason": "the others are meats"
+  },
+  {
+    "id": "a-oo-032",
+    "type": "odd-one-out",
+    "difficulty": 4,
+    "answer": "rose",
+    "others": ["tulip", "daffodil", "crocus", "snowdrop"],
+    "reason": "the others flower in spring"
+  },
+  {
+    "id": "a-oo-033",
+    "type": "odd-one-out",
+    "difficulty": 1,
+    "answer": "June",
+    "others": ["Monday", "Tuesday", "Friday", "Sunday"],
+    "reason": "the others are days of the week"
+  },
+  {
+    "id": "a-oo-034",
+    "type": "odd-one-out",
+    "difficulty": 2,
+    "answer": "piano",
+    "others": ["alto", "soprano", "tenor", "bass"],
+    "reason": "the others are singing voices"
+  },
+  {
+    "id": "a-oo-035",
+    "type": "odd-one-out",
+    "difficulty": 2,
+    "answer": "steam",
+    "others": ["glacier", "iceberg", "icicle", "frost"],
+    "reason": "the others are frozen water"
+  },
+  {
+    "id": "a-oo-036",
+    "type": "odd-one-out",
+    "difficulty": 3,
+    "answer": "overlook",
+    "others": ["scrutinise", "examine", "inspect", "study"],
+    "reason": "the others mean look at closely"
+  },
+  {
+    "id": "a-oo-037",
+    "type": "odd-one-out",
+    "difficulty": 1,
+    "answer": "friend",
+    "others": ["nephew", "niece", "cousin", "uncle"],
+    "reason": "the others are relatives"
+  },
+  {
+    "id": "a-oo-038",
+    "type": "odd-one-out",
+    "difficulty": 4,
+    "answer": "aggravate",
+    "others": ["mitigate", "alleviate", "ease", "lessen"],
+    "reason": "the others mean make less severe"
+  },
+  {
+    "id": "a-oo-039",
+    "type": "odd-one-out",
+    "difficulty": 4,
+    "answer": "ostrich",
+    "others": ["heron", "stork", "flamingo", "crane"],
+    "reason": "the others are wading birds that can fly"
+  },
+  {
+    "id": "a-oo-040",
+    "type": "odd-one-out",
+    "difficulty": 1,
+    "answer": "mile",
+    "others": ["dollar", "euro", "pound", "yen"],
+    "reason": "the others are currencies"
+  },
+  {
+    "id": "a-oo-041",
+    "type": "odd-one-out",
+    "difficulty": 3,
+    "answer": "sonata",
+    "others": ["sculpture", "painting", "drawing", "etching"],
+    "reason": "the others are visual art"
+  },
+  {
+    "id": "a-oo-042",
+    "type": "odd-one-out",
+    "difficulty": 3,
+    "answer": "muddled",
+    "others": ["lucid", "clear", "coherent", "intelligible"],
+    "reason": "the others mean easy to understand"
+  },
+  {
+    "id": "a-oo-043",
+    "type": "odd-one-out",
+    "difficulty": 3,
+    "answer": "save",
+    "others": ["squander", "waste", "fritter", "splurge"],
+    "reason": "the others mean spend freely"
+  },
+  {
+    "id": "a-oo-044",
+    "type": "odd-one-out",
+    "difficulty": 3,
+    "answer": "sprint",
+    "others": ["saunter", "stroll", "amble", "wander"],
+    "reason": "the others mean walk slowly"
+  },
+  {
+    "id": "a-oo-045",
+    "type": "odd-one-out",
+    "difficulty": 3,
+    "answer": "serene",
+    "others": ["anxious", "nervous", "uneasy", "apprehensive"],
+    "reason": "the others mean worried"
+  },
+  {
+    "id": "a-oo-046",
+    "type": "odd-one-out",
+    "difficulty": 2,
+    "answer": "water",
+    "others": ["hydrogen", "oxygen", "nitrogen", "helium"],
+    "reason": "the others are elements"
+  },
+  {
+    "id": "a-oo-047",
+    "type": "odd-one-out",
+    "difficulty": 4,
+    "answer": "swan",
+    "others": ["crow", "raven", "magpie", "rook"],
+    "reason": "the others belong to the crow family"
+  },
+  {
+    "id": "a-oo-048",
+    "type": "odd-one-out",
+    "difficulty": 2,
+    "answer": "turbulent",
+    "others": ["tranquil", "placid", "serene", "peaceful"],
+    "reason": "the others mean calm"
+  },
+  {
+    "id": "a-oo-049",
+    "type": "odd-one-out",
+    "difficulty": 2,
+    "answer": "granite",
+    "others": ["sapphire", "emerald", "ruby", "diamond"],
+    "reason": "the others are gemstones"
+  },
+  {
+    "id": "a-oo-050",
+    "type": "odd-one-out",
+    "difficulty": 2,
+    "answer": "tent",
+    "others": ["bungalow", "cottage", "mansion", "villa"],
+    "reason": "the others are houses"
+  },
+  {
+    "id": "a-oo-051",
+    "type": "odd-one-out",
+    "difficulty": 4,
+    "answer": "compliant",
+    "others": ["obstinate", "stubborn", "headstrong", "wilful"],
+    "reason": "the others mean refusing to give way"
+  },
+  {
+    "id": "a-oo-052",
+    "type": "odd-one-out",
+    "difficulty": 5,
+    "answer": "crab",
+    "others": ["snail", "slug", "octopus", "squid"],
+    "reason": "the others are molluscs"
+  },
+  {
+    "id": "a-oo-053",
+    "type": "odd-one-out",
+    "difficulty": 5,
+    "answer": "ant",
+    "others": ["spider", "scorpion", "mite", "tick"],
+    "reason": "the others are arachnids"
+  },
+  {
+    "id": "a-oo-054",
+    "type": "odd-one-out",
+    "difficulty": 3,
+    "answer": "straighten",
+    "others": ["meander", "wind", "twist", "zigzag"],
+    "reason": "the others describe a winding path"
+  },
+  {
+    "id": "a-oo-055",
+    "type": "odd-one-out",
+    "difficulty": 4,
+    "answer": "evasive",
+    "others": ["candid", "frank", "forthright", "blunt"],
+    "reason": "the others mean speaking openly"
+  },
+  {
+    "id": "a-oo-056",
+    "type": "odd-one-out",
+    "difficulty": 3,
+    "answer": "lavish",
+    "others": ["frugal", "thrifty", "economical", "sparing"],
+    "reason": "the others mean careful with money"
+  },
+  {
+    "id": "a-oo-057",
+    "type": "odd-one-out",
+    "difficulty": 4,
+    "answer": "novel",
+    "others": ["antique", "vintage", "ancient", "old"],
+    "reason": "the others mean old; novel means new"
+  },
+  {
+    "id": "a-oo-058",
+    "type": "odd-one-out",
+    "difficulty": 2,
+    "answer": "skull",
+    "others": ["kidney", "liver", "lung", "heart"],
+    "reason": "the others are organs"
+  },
+  {
+    "id": "a-oo-059",
+    "type": "odd-one-out",
+    "difficulty": 3,
+    "answer": "radiant",
+    "others": ["sombre", "gloomy", "dismal", "bleak"],
+    "reason": "the others mean dark or sad"
+  },
+  {
+    "id": "a-oo-060",
+    "type": "odd-one-out",
+    "difficulty": 3,
+    "answer": "Mediterranean",
+    "others": ["Atlantic", "Pacific", "Indian", "Arctic"],
+    "reason": "the others are oceans"
+  },
+  {
+    "id": "a-oo-061",
+    "type": "odd-one-out",
+    "difficulty": 3,
+    "answer": "bellow",
+    "others": ["whisper", "murmur", "mutter", "mumble"],
+    "reason": "the others mean speak quietly"
+  },
+  {
+    "id": "a-oo-062",
+    "type": "odd-one-out",
+    "difficulty": 3,
+    "answer": "invent",
+    "others": ["replicate", "duplicate", "copy", "reproduce"],
+    "reason": "the others mean make a copy"
+  },
+  {
+    "id": "a-oo-063",
+    "type": "odd-one-out",
+    "difficulty": 4,
+    "answer": "clumsy",
+    "others": ["nimble", "agile", "lithe", "spry"],
+    "reason": "the others mean moving easily"
+  },
+  {
+    "id": "a-oo-064",
+    "type": "odd-one-out",
+    "difficulty": 4,
+    "answer": "explicit",
+    "others": ["vague", "ambiguous", "unclear", "hazy"],
+    "reason": "the others mean not clear"
+  },
+  {
+    "id": "a-oo-065",
+    "type": "odd-one-out",
+    "difficulty": 4,
+    "answer": "conclude",
+    "others": ["inaugurate", "commence", "initiate", "launch"],
+    "reason": "the others mean begin"
+  },
+  {
+    "id": "a-oo-066",
+    "type": "odd-one-out",
+    "difficulty": 5,
+    "answer": "reclusive",
+    "others": ["gregarious", "sociable", "outgoing", "convivial"],
+    "reason": "the others mean enjoying company"
+  },
+  {
+    "id": "a-oo-067",
+    "type": "odd-one-out",
+    "difficulty": 5,
+    "answer": "reticent",
+    "others": ["loquacious", "talkative", "garrulous", "voluble"],
+    "reason": "the others mean talking a lot"
+  },
+  {
+    "id": "a-oo-068",
+    "type": "odd-one-out",
+    "difficulty": 5,
+    "answer": "craven",
+    "others": ["intrepid", "valiant", "dauntless", "courageous"],
+    "reason": "the others mean brave"
+  },
+  {
+    "id": "a-oo-069",
+    "type": "odd-one-out",
+    "difficulty": 5,
+    "answer": "affluent",
+    "others": ["impecunious", "destitute", "penniless", "needy"],
+    "reason": "the others mean poor"
+  },
+  {
+    "id": "a-oo-070",
+    "type": "odd-one-out",
+    "difficulty": 5,
+    "answer": "domineering",
+    "others": ["obsequious", "servile", "fawning", "sycophantic"],
+    "reason": "the others mean too eager to please"
+  },
+  {
+    "id": "a-oo-071",
+    "type": "odd-one-out",
+    "difficulty": 5,
+    "answer": "salutary",
+    "others": ["pernicious", "harmful", "injurious", "deleterious"],
+    "reason": "the others mean harmful"
+  },
+  {
+    "id": "a-oo-072",
+    "type": "odd-one-out",
+    "difficulty": 2,
+    "answer": "kilometre",
+    "others": ["gram", "kilogram", "tonne", "ounce"],
+    "reason": "the others measure weight"
+  },
+  {
+    "id": "a-oo-073",
+    "type": "odd-one-out",
+    "difficulty": 3,
+    "answer": "flute",
+    "others": ["drum", "cymbal", "xylophone", "tambourine"],
+    "reason": "the others are percussion instruments"
+  },
+  {
+    "id": "a-oo-074",
+    "type": "odd-one-out",
+    "difficulty": 4,
+    "answer": "Windermere",
+    "others": ["Thames", "Severn", "Trent", "Mersey"],
+    "reason": "the others are rivers"
+  },
+  {
+    "id": "a-oo-075",
+    "type": "odd-one-out",
+    "difficulty": 2,
+    "answer": "dolphin",
+    "others": ["shark", "ray", "eel", "cod"],
+    "reason": "the others are fish"
+  },
+  {
+    "id": "a-oo-076",
+    "type": "odd-one-out",
+    "difficulty": 2,
+    "answer": "triangle",
+    "others": ["cube", "sphere", "cylinder", "pyramid"],
+    "reason": "the others are solid shapes"
+  }
+]
