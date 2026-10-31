@@ -20,7 +20,9 @@
     "migrate": "tsx scripts/migrate.ts",
     "seed": "tsx scripts/seed.ts",
     "db:setup": "npm run migrate && npm run seed",
-    "check:api": "node scripts/check-api.mjs"
+    "check:api": "node scripts/check-api.mjs",
+    "calibrate": "tsx scripts/calibrate.ts",
+    "purge": "tsx scripts/purge.ts"
   },
   "dependencies": {
     "@neondatabase/serverless": "^1.2.0",
