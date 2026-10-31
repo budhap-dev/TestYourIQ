@@ -1,9 +1,6 @@
 // @vitest-environment node
-import { PGlite } from '@electric-sql/pglite';
-import { readFileSync, readdirSync } from 'node:fs';
-import { join, resolve } from 'node:path';
+import type { PGlite } from '@electric-sql/pglite';
 import { afterAll, beforeAll, describe, expect, it } from 'vitest';
-import type { PoolLike } from '../../server/db';
 import { itemFromKey } from '../../src/engine/generators';
 import {
   answer,
@@ -15,7 +12,7 @@ import {
 } from '../../server/service';
 import { PgStore } from '../../server/store-pg';
 import { deriveKeys, verifyTakerToken } from '../../server/tokens';
-import { seedParams } from '../../scripts/seed';
+import { migratedDb } from './pglite';
 
 /**
  * Runs the real migrations and the Postgres store against an embedded Postgres (PGlite), so
@@ -27,38 +24,13 @@ let deps: Deps;
 let clock = new Date('2026-11-01T10:00:00Z');
 
 beforeAll(async () => {
-  db = new PGlite();
-  const dir = resolve('db/migrations');
-  for (const file of readdirSync(dir).sort()) await db.exec(readFileSync(join(dir, file), 'utf8'));
-  for (const r of seedParams()) {
-    await db.query('insert into item_params (param_key, version, a, b) values ($1, 1, $2, $3)', [
-      r.key,
-      r.a,
-      r.b,
-    ]);
-  }
+  const setup = await migratedDb();
+  db = setup.db;
   // Overrides one template in a later version, to check the newest version wins.
   await db.query(
     "insert into item_params (param_key, version, a, b) values ('gen:matrix:v1:d2', 2, 1.7, -0.9)",
   );
-
-  // PGlite is a single connection; serialise transactions like a pool of one.
-  let queue: Promise<unknown> = Promise.resolve();
-  const pool: PoolLike = {
-    query: (text, params) => db.query(text, params) as never,
-    connect: async () => {
-      let release!: () => void;
-      const turn = new Promise<void>((r) => (release = r));
-      const wait = queue;
-      queue = queue.then(() => turn);
-      await wait;
-      return {
-        query: (text: string, params?: unknown[]) => db.query(text, params) as never,
-        release,
-      };
-    },
-    end: async () => undefined,
-  };
+  const pool = setup.pool;
   deps = {
     store: new PgStore(pool),
     keys: deriveKeys('test-secret-test-secret-test-secret-123'),

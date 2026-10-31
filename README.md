@@ -46,6 +46,7 @@ See `.env.example`.
 | Variable         | Purpose                                                                                                                                                                                                              |
 | ---------------- | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
 | `DATABASE_URL`   | Postgres connection string. Neon URLs use Neon's serverless driver; others use node-postgres. Empty in local dev means an in-memory store. Required in production.                                                   |
+| `CRON_SECRET`    | Optional. Turns on the weekly maintenance cron (purge, then calibrate); Vercel sends it as a bearer token.                                                                                                           |
 | `SESSION_SECRET` | At least 32 random characters, used to sign the test-taker cookie and encrypt item tokens. Required in production; generate with `openssl rand -base64 48`. Changing it invalidates every cookie and in-flight test. |
 
 ## Database (Neon)
@@ -84,6 +85,34 @@ All endpoints are JSON, `no-store`, and identify the test-taker by an HTTP-only 
 Items carry an encrypted, short-lived `itemToken`; the client never sees item keys, seeds or
 answers. A test-taker can start at most 5 attempts an hour.
 
+## Calibration
+
+Scores start from **estimated** norms and item parameters. As consenting first-time test-takers
+complete the test, recalibrate:
+
+```bash
+DATABASE_URL=postgres://… npm run calibrate -- --dry-run   # preview
+DATABASE_URL=postgres://… npm run calibrate
+```
+
+- **Data used:** only eligible attempts. That means the person's first attempt, with consent,
+  and none of the quality flags (median under 3 seconds per item, one option position
+  ≥ 75% of the time, an aberrant response pattern). Only questions that were actually shown
+  count.
+- **Method:** marginal maximum likelihood (Bock–Aitkin EM) for item `a`/`b`, with one ability
+  distribution per age band. Young adults (20–34) anchor the scale at N(0, 1) once there are at
+  least 200 of them. Items need 50 responses and bands need 30 people before they move; anything
+  with less data keeps its previous values.
+- **Output:** a new `norms_versions` row with all 16 bands, and a new `item_params` version for
+  re-estimated items. History is never overwritten. Each attempt records the norms version that
+  scored it, and new attempts use the latest.
+- **Calibrating note:** results show "Calibrating" while a band has fewer than 500 eligible
+  attempts.
+
+With `CRON_SECRET` set, Vercel Cron calls `/api/cron/maintenance` every Monday at 03:00 UTC. It
+deletes records older than 24 months, then recalibrates. Without the secret, the endpoint
+returns 503.
+
 ## Deploying (Vercel)
 
 1. Import the repository into Vercel. The framework preset is Vite; `vercel.json` sets the build,
@@ -92,7 +121,10 @@ answers. A test-taker can start at most 5 attempts an hour.
    branch).
 3. Run `npm run db:setup` against the production database once, and again whenever a new
    migration is added.
-4. `npm run check:api` (run in CI or before deploying) catches module errors that only show up
+4. Optionally set `CRON_SECRET` to enable the weekly maintenance cron (see Calibration). The
+   cron function is limited to 60 seconds (the Hobby plan maximum). On Pro, raise `maxDuration` in
+   `vercel.json` if calibration grows slow.
+5. `npm run check:api` (run in CI or before deploying) catches module errors that only show up
    in Vercel's per-file compilation.
 
 ## Themes
@@ -130,7 +162,7 @@ type, level and seed, with its rule and answer. This page isn't in production bu
 /api                 Vercel functions (thin wrappers)
 /server              API logic: service, handlers, tokens, Postgres and in-memory stores
 /db/migrations       SQL migrations
-/scripts             migrate, seed, gen-themes, check-api (calibrate later)
+/scripts             migrate, seed, calibrate, purge, gen-themes, check-api
 /src
   /app               routes, layout, theme state
   /components        shared UI
