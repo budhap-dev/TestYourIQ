@@ -9,6 +9,8 @@ const PORT = 5180;
 export default defineConfig({
   testDir: 'tests/e2e',
   timeout: 120_000,
+  // The dev server compiles each page on first visit, which is slow on a cold CI runner.
+  expect: { timeout: 15_000 },
   fullyParallel: false,
   workers: 1,
   reporter: process.env.CI ? 'github' : 'list',

@@ -3,15 +3,19 @@ import { expect, test, type Page } from '@playwright/test';
 import { isDesktop, setUp, takeTest } from './helpers';
 
 const audit = async (page: Page, where: string) => {
-  // Measure what people read: wait for entrance animations (not looping ones) to finish.
-  await page.evaluate(() =>
-    Promise.all(
-      document
+  // Measure what people read: wait until no entrance animation (looping ones aside) is running.
+  await page.evaluate(async () => {
+    for (let i = 0; i < 10; i++) {
+      const running = document
         .getAnimations()
-        .filter((a) => a.effect?.getComputedTiming().iterations !== Infinity)
-        .map((a) => a.finished.catch(() => undefined)),
-    ),
-  );
+        .filter(
+          (a) => a.playState === 'running' && a.effect?.getComputedTiming().iterations !== Infinity,
+        );
+      if (running.length === 0) return;
+      await Promise.all(running.map((a) => a.finished.catch(() => undefined)));
+      await new Promise((r) => requestAnimationFrame(() => r(undefined)));
+    }
+  });
   const results = await new AxeBuilder({ page })
     .withTags(['wcag2a', 'wcag2aa', 'wcag21a', 'wcag21aa', 'wcag22aa'])
     .analyze();
@@ -35,6 +39,7 @@ test('every screen passes an automated WCAG 2.2 AA audit', async ({ page }) => {
   await audit(page, 'setup');
 
   await setUp(page, 12);
+  await expect(page.getByText('Question 1 of 32', { exact: true })).toBeVisible();
   await audit(page, 'test');
   await takeTest(page);
   await audit(page, 'results');
