@@ -16,5 +16,5 @@
     "skipLibCheck": true,
     "noEmit": true
   },
-  "include": ["vite.config.ts", "vitest.config.ts", "vite-plugin-api.ts"]
+  "include": ["vite.config.ts", "vitest.config.ts", "vite-plugin-api.ts", "playwright.config.ts"]
 }

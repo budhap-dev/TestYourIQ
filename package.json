@@ -22,7 +22,9 @@
     "db:setup": "npm run migrate && npm run seed",
     "check:api": "node scripts/check-api.mjs",
     "calibrate": "tsx scripts/calibrate.ts",
-    "purge": "tsx scripts/purge.ts"
+    "purge": "tsx scripts/purge.ts",
+    "test:e2e": "playwright test",
+    "check:bundle": "node scripts/check-bundle.mjs"
   },
   "dependencies": {
     "@neondatabase/serverless": "^1.2.0",
@@ -32,6 +34,7 @@
     "zod": "^4.6.7"
   },
   "devDependencies": {
+    "@axe-core/playwright": "^4.14.0",
     "@electric-sql/pglite": "^0.5.13",
     "@eslint/js": "^10.0.1",
     "@playwright/test": "^1.64.1",

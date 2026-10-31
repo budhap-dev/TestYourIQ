@@ -3,8 +3,6 @@
 A web app that estimates IQ with a timed test of original reasoning puzzles, scored against
 people of the same age. It gives an estimate, not a clinical assessment.
 
-> Work in progress: the full flow works end to end; retake polish, calibration and the final accessibility pass come next.
-
 ## Requirements
 
 - Node.js 22 or later (developed on Node 24)
@@ -156,6 +154,38 @@ Tests check every palette in both modes against WCAG 2.2 AA contrast.
 While running `npm run dev`, open **http://localhost:5173/dev/puzzles** to browse any item by
 type, level and seed, with its rule and answer. This page isn't in production builds.
 
+## Testing
+
+- **Unit and integration** (`npm test`):
+  - every generator: same seed gives the same item, exactly one correct answer (checked
+    independently), no duplicate options, option-only guessing at chance
+  - IRT and EAP maths against known answer patterns
+  - norms and IQ maths
+  - the attempt service: adaptivity, timeouts, resume, retakes without repeats, token tampering,
+    rate limits
+  - the real SQL migrations and Postgres store, on embedded Postgres (PGlite)
+  - calibration recovering known parameters from simulated data
+- **End to end** (`npm run test:e2e`; first run `npx playwright install chromium`):
+  - the full flow on desktop by keyboard alone (light theme) and on a 360px touch phone (dark
+    theme)
+  - a retake from the same browser shows no repeated question
+  - no API response contains answers or item keys
+  - axe WCAG 2.2 AA audits of every screen
+  - 44px touch targets
+  - focus moves to each new question
+  - reduced motion
+- **CI** (`.github/workflows/ci.yml`) runs lint, typecheck, format, unit tests, build, the bundle
+  and API checks, and the end-to-end suite on every pull request.
+
+## Accessibility
+
+- Keyboard: number keys 1–8 choose, Enter confirms, and all controls are reachable with Tab.
+  After each answer, focus moves to the new question so screen readers announce it.
+- Pattern questions describe each cell in text, e.g. "3 large shaded crosses". Shape-turning
+  questions are visual only, and the landing page says so.
+- Colours meet WCAG 2.2 AA in all ten palettes, light and dark (tested), with visible focus
+  rings, reduced motion respected, and no information carried by colour alone.
+
 ## Project layout
 
 ```
@@ -170,7 +200,7 @@ type, level and seed, with its rule and answer. This page isn't in production bu
   /features/results  results (later step)
   /engine            generators, IRT, scoring, blueprint (framework-free, shared with /server)
   /styles            tokens, palettes, generated themes
-/tests               Vitest (and Playwright later)
+/tests               Vitest (unit, server, embedded Postgres) and /tests/e2e (Playwright)
 ```
 
 See `DECISIONS.md` for choices made along the way.

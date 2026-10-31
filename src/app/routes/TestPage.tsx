@@ -89,9 +89,17 @@ export function TestPage() {
     api.current(attemptId).then(apply, fail);
   }, [attemptId, apply, fail]);
 
-  // Response time runs from when a question appears.
+  // Response time runs from when a question appears. After an answer, focus moves to the new
+  // question so keyboard users keep their place and screen readers announce it.
+  const stageRef = useRef<HTMLElement>(null);
+  const firstQuestion = useRef(true);
   useEffect(() => {
     shownAt.current = performance.now();
+    if (firstQuestion.current) {
+      firstQuestion.current = false;
+      return;
+    }
+    stageRef.current?.focus();
   }, [payload?.token]);
 
   const send = useCallback(
@@ -197,14 +205,20 @@ export function TestPage() {
         </p>
       )}
 
-      <div key={payload.number} className={styles.stage}>
+      <section
+        key={payload.number}
+        ref={stageRef}
+        tabIndex={-1}
+        className={styles.stage}
+        aria-label={`Question ${payload.number} of ${payload.total}`}
+      >
         <ItemView
           content={payload.item.content}
           selected={selected}
           onSelect={choose}
           disabled={status !== 'ready'}
         />
-      </div>
+      </section>
 
       <div className={styles.actions}>
         <p className={styles.keysHint}>

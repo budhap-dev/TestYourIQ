@@ -82,6 +82,16 @@
 
 .stage {
   min-height: 24rem;
+  border-radius: var(--radius-md);
+}
+
+.stage:focus {
+  outline: none;
+}
+
+.stage:focus-visible {
+  outline: var(--focus-ring-width) solid var(--focus-ring);
+  outline-offset: 6px;
   animation: enter var(--duration-slow) var(--ease-out);
 }
 
