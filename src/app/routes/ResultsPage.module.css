@@ -1,0 +1,124 @@
+.page {
+  display: grid;
+  gap: var(--space-7);
+  max-width: 52rem;
+}
+
+.hero {
+  display: grid;
+  gap: var(--space-3);
+}
+
+.eyebrow {
+  font-size: var(--text-sm);
+  font-weight: 600;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: var(--accent);
+}
+
+.headline {
+  display: grid;
+  gap: var(--space-1);
+  font-weight: 400;
+}
+
+.headline span:first-child {
+  font-family: var(--font-body);
+  font-size: var(--text-lg);
+  color: var(--text-muted);
+}
+
+.number {
+  font-size: clamp(4.5rem, 3rem + 8vw, 7.5rem);
+  line-height: 1;
+  letter-spacing: -0.03em;
+  font-variant-numeric: tabular-nums lining-nums;
+}
+
+.range {
+  font-size: var(--text-xl);
+  font-family: var(--font-display);
+  font-variant-numeric: tabular-nums lining-nums;
+}
+
+.percentile {
+  font-size: var(--text-lg);
+  color: var(--text-muted);
+}
+
+.notices {
+  display: grid;
+  gap: var(--space-3);
+}
+
+.card {
+  display: grid;
+  gap: var(--space-5);
+  padding: var(--space-5);
+  border: var(--border-width) solid var(--border);
+  border-radius: var(--radius-lg);
+  background: var(--surface);
+}
+
+@media (min-width: 40rem) {
+  .card {
+    padding: var(--space-6);
+  }
+}
+
+.card h2 {
+  font-size: var(--text-xl);
+}
+
+.explain {
+  display: grid;
+  gap: var(--space-4);
+}
+
+.explain h2 {
+  font-size: var(--text-xl);
+}
+
+.explain ul {
+  margin: 0;
+  padding-left: 1.25rem;
+  display: grid;
+  gap: var(--space-2);
+  color: var(--text-muted);
+}
+
+.explain strong {
+  color: var(--text);
+}
+
+.actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--space-3);
+}
+
+.message {
+  display: grid;
+  gap: var(--space-4);
+  justify-items: start;
+}
+
+.skeleton {
+  height: 14rem;
+  border-radius: var(--radius-lg);
+  background: linear-gradient(
+    90deg,
+    var(--surface-sunken) 0%,
+    var(--surface) 50%,
+    var(--surface-sunken) 100%
+  );
+  background-size: 200% 100%;
+  animation: shimmer 1.6s linear infinite;
+}
+
+@keyframes shimmer {
+  to {
+    background-position: -200% 0;
+  }
+}

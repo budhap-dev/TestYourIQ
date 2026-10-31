@@ -3,7 +3,7 @@
 A web app that estimates IQ with a timed test of original reasoning puzzles, scored against
 people of the same age. It gives an estimate, not a clinical assessment.
 
-> Work in progress: the engine, scoring and API are done; the test and results screens come next.
+> Work in progress: the full flow works end to end; retake polish, calibration and the final accessibility pass come next.
 
 ## Requirements
 

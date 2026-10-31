@@ -19,18 +19,25 @@ import { generatedKey } from '../src/engine/itemKey.js';
 import { SEED_NORMS, bandForAge, type Norm } from '../src/engine/norms.js';
 import { assessQuality } from '../src/engine/quality.js';
 import { createRng, hashString } from '../src/engine/rng.js';
-import { scoreAreas, scoreIq, type AreaResult, type IqResult } from '../src/engine/scoring.js';
+import { scoreAreas, scoreIq } from '../src/engine/scoring.js';
 import {
   DIFFICULTIES,
   toPublicItem,
-  type Area,
   type Difficulty,
   type IrtParams,
   type Item,
-  type PublicItem,
   type Track,
 } from '../src/engine/types.js';
 import { VERBAL_BANK, verbalItem } from '../src/engine/verbal/bank.js';
+import type {
+  AttemptStarted,
+  ItemPayload,
+  PreviousResult,
+  Progress,
+  ResultView,
+  SectionInfo,
+  TakerSummary,
+} from '../src/shared/api.js';
 import type { AttemptRow, NormSet, ResponseRow, Store, Tx } from './store.js';
 import { openItemToken, sealItemToken, signTakerId, type Keys } from './tokens.js';
 
@@ -57,75 +64,7 @@ export const SECTION_GRACE_MS = 10_000;
 export const ABANDON_AFTER_MS = 3 * 60 * 60 * 1000;
 
 // ---------------------------------------------------------------------------------------------
-// Public shapes
-
-export interface SectionInfo {
-  area: Area;
-  items: number;
-  seconds: number;
-}
-
-export interface ItemPayload {
-  /** Encrypted, short-lived; send it back with the answer. */
-  token: string;
-  number: number;
-  total: number;
-  section: {
-    index: number;
-    count: number;
-    area: Area;
-    itemNumber: number;
-    items: number;
-    seconds: number;
-    endsAt: string;
-  };
-  serverNow: string;
-  item: PublicItem;
-}
-
-export interface PreviousResult {
-  completedAt: string;
-  iqLabel: string;
-  low: number;
-  high: number;
-}
-
-export interface RetakeInfo {
-  attemptNumber: number;
-  completedBefore: number;
-  previous: PreviousResult | null;
-}
-
-export interface AttemptStarted {
-  takerToken: string;
-  attemptId: string;
-  track: Track;
-  sections: SectionInfo[];
-  retake: RetakeInfo;
-  next: ItemPayload;
-}
-
-export type Progress = { done: true } | { done: false; next: ItemPayload };
-
-export interface ResultView {
-  attemptId: string;
-  completedAt: string;
-  track: Track;
-  ageBand: string;
-  score: IqResult;
-  areas: AreaResult[];
-  answered: number;
-  correct: number;
-  total: number;
-  normsVersion: number;
-  retake: RetakeInfo;
-}
-
-export interface TakerSummary {
-  takerToken: string | null;
-  completedBefore: number;
-  previous: PreviousResult | null;
-}
+// Public shapes live in src/shared/api.ts so the browser can use them too.
 
 // ---------------------------------------------------------------------------------------------
 // Helpers
@@ -675,3 +614,13 @@ export async function getResult(
     return attempt.result;
   });
 }
+
+export type {
+  AttemptStarted,
+  ItemPayload,
+  PreviousResult,
+  Progress,
+  ResultView,
+  SectionInfo,
+  TakerSummary,
+} from '../src/shared/api.js';

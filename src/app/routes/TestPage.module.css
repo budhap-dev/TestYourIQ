@@ -1,0 +1,147 @@
+.page {
+  display: grid;
+  gap: var(--space-5);
+}
+
+.bar {
+  display: grid;
+  gap: var(--space-3);
+  padding-bottom: var(--space-4);
+  border-bottom: var(--border-width) solid var(--border);
+}
+
+.barRow {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  align-items: baseline;
+  gap: var(--space-2) var(--space-5);
+}
+
+.section {
+  font-weight: 600;
+}
+
+.section span {
+  font-weight: 400;
+  color: var(--text-muted);
+}
+
+.timer {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--space-2);
+  font-variant-numeric: tabular-nums;
+  color: var(--text-muted);
+}
+
+.timer strong {
+  font-weight: 600;
+  color: var(--text);
+  min-width: 3.2em;
+  text-align: right;
+}
+
+.timer svg {
+  width: 1.1rem;
+  height: 1.1rem;
+}
+
+/* Low time is shown calmly: a quiet label, never red or flashing. */
+.timerLow strong {
+  color: var(--accent);
+}
+
+.progress {
+  height: 4px;
+  border-radius: 2px;
+  background: var(--surface-sunken);
+  overflow: hidden;
+}
+
+.progress span {
+  display: block;
+  height: 100%;
+  border-radius: 2px;
+  background: var(--accent);
+  transition: width var(--duration-slow) var(--ease-out);
+}
+
+.counter {
+  font-size: var(--text-sm);
+  color: var(--text-muted);
+  font-variant-numeric: tabular-nums;
+}
+
+.newSection {
+  padding: var(--space-3) var(--space-4);
+  border-radius: var(--radius-md);
+  background: var(--accent-soft);
+  font-size: var(--text-sm);
+}
+
+.stage {
+  min-height: 24rem;
+  animation: enter var(--duration-slow) var(--ease-out);
+}
+
+@keyframes enter {
+  from {
+    opacity: 0;
+    transform: translateX(12px);
+  }
+}
+
+.actions {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  align-items: center;
+  gap: var(--space-3);
+  padding-top: var(--space-4);
+  border-top: var(--border-width) solid var(--border);
+}
+
+.keysHint {
+  display: none;
+  font-size: var(--text-sm);
+  color: var(--text-muted);
+}
+
+@media (min-width: 52rem) and (hover: hover) {
+  .keysHint {
+    display: block;
+  }
+}
+
+.right {
+  display: flex;
+  gap: var(--space-3);
+  margin-left: auto;
+}
+
+.message {
+  display: grid;
+  gap: var(--space-4);
+  justify-items: start;
+  max-width: var(--content-max);
+}
+
+.skeleton {
+  height: 22rem;
+  border-radius: var(--radius-lg);
+  background: linear-gradient(
+    90deg,
+    var(--surface-sunken) 0%,
+    var(--surface) 50%,
+    var(--surface-sunken) 100%
+  );
+  background-size: 200% 100%;
+  animation: shimmer 1.6s linear infinite;
+}
+
+@keyframes shimmer {
+  to {
+    background-position: -200% 0;
+  }
+}
