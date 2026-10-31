@@ -11,7 +11,8 @@ test('takes the whole test and shows a complete result', async ({ page }) => {
 
   await expect(page.getByRole('heading', { name: /Estimated IQ/ })).toBeVisible();
   await expect(page.getByText(/^likely (between \d+ and \d+|around \d+)$/)).toBeVisible();
-  await expect(page.getByText(/of people aged 25–34\./)).toBeVisible();
+  // Wording varies at the extremes ("around the lowest 1%"), but always names the age group.
+  await expect(page.getByText(/people aged 25–34/).first()).toBeVisible();
   await expect(page.getByText('Calibrating: early estimate')).toBeVisible();
   await expect(page.getByRole('img', { name: /Bell curve of scores/ })).toBeVisible();
   for (const area of ['Patterns', 'Numbers', 'Shapes', 'Words']) {

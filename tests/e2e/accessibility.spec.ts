@@ -3,6 +3,15 @@ import { expect, test, type Page } from '@playwright/test';
 import { isDesktop, setUp, takeTest } from './helpers';
 
 const audit = async (page: Page, where: string) => {
+  // Measure what people read: wait for entrance animations (not looping ones) to finish.
+  await page.evaluate(() =>
+    Promise.all(
+      document
+        .getAnimations()
+        .filter((a) => a.effect?.getComputedTiming().iterations !== Infinity)
+        .map((a) => a.finished.catch(() => undefined)),
+    ),
+  );
   const results = await new AxeBuilder({ page })
     .withTags(['wcag2a', 'wcag2aa', 'wcag21a', 'wcag21aa', 'wcag22aa'])
     .analyze();
@@ -16,10 +25,6 @@ test('every screen passes an automated WCAG 2.2 AA audit', async ({ page }) => {
   await page.goto('/');
   await audit(page, 'landing');
   await page.getByRole('button', { name: 'Appearance' }).click();
-  // Audit once the panel's fade-in has finished; mid-fade colours aren't what people read.
-  await page
-    .getByRole('group', { name: 'Appearance' })
-    .evaluate((el) => Promise.all(el.getAnimations().map((a) => a.finished)));
   await audit(page, 'appearance menu');
   await page.keyboard.press('Escape');
   await page.goto('/privacy');
