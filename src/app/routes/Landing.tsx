@@ -154,8 +154,9 @@ export function Landing() {
           </Notice>
           <Notice title="Some questions are visual" tone="neutral">
             <p>
-              Pattern and shape questions are pictures, and we can’t yet describe them well enough
-              for a screen reader. Everything else works with a keyboard and screen reader.
+              Pattern questions come with text descriptions for screen readers. Shape-turning
+              questions can only be done by sight, so they’ll be hard or impossible without it.
+              Everything else works with a keyboard and a screen reader.
             </p>
           </Notice>
         </div>
