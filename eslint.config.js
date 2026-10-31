@@ -45,6 +45,8 @@ export default tseslint.config(
             {
               // Only content types, renderers and shared helpers may reach the browser.
               regex: '(^|/)engine/(?!(types|svg|[a-z]+/(model|render))$)',
+              // Type-only imports are erased at build time, so they can't leak answers.
+              allowTypeImports: true,
               message: 'Answer-generating engine code must stay on the server.',
             },
           ],

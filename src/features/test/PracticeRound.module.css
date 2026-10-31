@@ -1,0 +1,36 @@
+.round {
+  display: grid;
+  gap: var(--space-5);
+}
+
+.meta {
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+  font-size: var(--text-sm);
+  color: var(--text-muted);
+}
+
+.actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--space-3);
+  justify-content: flex-end;
+  align-items: center;
+}
+
+.feedback {
+  padding: var(--space-4) var(--space-5);
+  border-radius: var(--radius-md);
+  border-left: 4px solid var(--border-strong);
+  background: var(--surface);
+}
+
+.feedback[data-correct='true'] {
+  border-left-color: var(--positive);
+}
+
+.feedbackTitle {
+  font-weight: 600;
+  margin-bottom: var(--space-1);
+}
