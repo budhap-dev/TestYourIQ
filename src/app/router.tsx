@@ -7,6 +7,17 @@ import { ResultsPage } from './routes/ResultsPage';
 import { Setup } from './routes/Setup';
 import { TestPage } from './routes/TestPage';
 
+// Dev-only tools. The condition is replaced at build time, so production bundles never include
+// these routes or the generators they import.
+const devRoutes: RouteObject[] = import.meta.env.DEV
+  ? [
+      {
+        path: 'dev/puzzles',
+        lazy: async () => ({ Component: (await import('./routes/DevPuzzles')).DevPuzzles }),
+      },
+    ]
+  : [];
+
 export const routes: RouteObject[] = [
   {
     element: <Layout />,
@@ -16,6 +27,7 @@ export const routes: RouteObject[] = [
       { path: 'test/:attemptId', element: <TestPage /> },
       { path: 'results/:attemptId', element: <ResultsPage /> },
       { path: 'privacy', element: <Privacy /> },
+      ...devRoutes,
       { path: '*', element: <NotFound /> },
     ],
   },

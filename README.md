@@ -47,6 +47,21 @@ Light or Dark and a palette from the **Appearance** menu. Palettes are defined i
 `src/styles/palettes.ts` as a few OKLCH values. After editing them, run `npm run gen:themes`.
 Tests check every palette in both modes against WCAG 2.2 AA contrast.
 
+## Item engine
+
+`src/engine` is framework-free TypeScript shared by the browser and the server.
+
+- Generators are pure functions `generate(seed, difficulty) → Item`. The same seed always gives
+  the same item. Difficulty levels 1–5 are explicit parameter tables (e.g. `MATRIX_LEVELS`).
+- Items are rendered to SVG from a declarative description (`renderCell`) and follow the theme
+  via `currentColor`.
+- Answers never reach the browser: clients get `toPublicItem(item)`, and the server checks an
+  answer by regenerating the item from its key (`checkAnswer`). ESLint stops UI code importing
+  generators.
+
+While running `npm run dev`, open **http://localhost:5173/dev/puzzles** to browse generated
+items by level and seed, with the rules and answer. This page isn't in production builds.
+
 ## Project layout
 
 ```

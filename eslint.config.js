@@ -33,5 +33,28 @@ export default tseslint.config(
       ],
     },
   },
+  {
+    // Generators know the answers. UI code may import content types and renderers only.
+    files: ['src/app/**/*.{ts,tsx}', 'src/components/**/*.{ts,tsx}', 'src/features/**/*.{ts,tsx}'],
+    ignores: ['src/app/routes/Dev*.tsx'],
+    rules: {
+      'no-restricted-imports': [
+        'error',
+        {
+          patterns: [
+            {
+              group: [
+                '**/engine/generators',
+                '**/engine/*/generate',
+                '**/engine/*/solve',
+                '**/engine/*/rules',
+              ],
+              message: 'Answer-generating engine code must stay on the server.',
+            },
+          ],
+        },
+      ],
+    },
+  },
   prettier,
 );
