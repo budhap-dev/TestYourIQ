@@ -1,4 +1,4 @@
-export const APP_NAME = 'Test Your IQ';
+export const APP_NAME = 'unIQo';
 
 /** Where privacy requests go. Placeholder until a real address is chosen (see DECISIONS.md). */
 export const PRIVACY_CONTACT = 'privacy@example.com';

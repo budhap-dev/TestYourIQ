@@ -1,4 +1,4 @@
-# Test Your IQ
+# unIQo
 
 A web app that estimates IQ with a timed test of original reasoning puzzles, scored against
 people of the same age. It gives an estimate, not a clinical assessment.
