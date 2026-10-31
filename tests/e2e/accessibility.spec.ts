@@ -82,5 +82,5 @@ test('respects reduced motion', async ({ page }) => {
   const duration = await page.evaluate(() =>
     getComputedStyle(document.documentElement).getPropertyValue('--duration-slow').trim(),
   );
-  expect(duration).toBe('0ms');
+  expect(parseFloat(duration)).toBe(0); // minified CSS may write 0ms as 0s
 });

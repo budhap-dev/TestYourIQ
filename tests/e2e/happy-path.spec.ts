@@ -5,7 +5,7 @@ test('takes the whole test and shows a complete result', async ({ page }) => {
   const errors: string[] = [];
   page.on('pageerror', (e) => errors.push(e.message));
   await setUp(page, 30, { consent: true });
-  await expect(page.getByText('Patterns', { exact: true })).toBeVisible();
+  await expect(page.getByText('Patterns · Section 1 of 4')).toBeVisible();
   await expect(page.getByRole('timer')).toHaveText(/^\d+:\d\d$/);
   await takeTest(page);
 
