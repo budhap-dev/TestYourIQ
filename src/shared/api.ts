@@ -69,6 +69,8 @@ export interface TakerSummary {
   takerToken: string | null;
   completedBefore: number;
   previous: PreviousResult | null;
+  /** An unfinished test this browser can resume. */
+  inProgress: { attemptId: string; startedAt: string } | null;
 }
 
 export interface ApiErrorBody {
