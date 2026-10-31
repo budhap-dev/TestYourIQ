@@ -62,7 +62,17 @@ export function Layout() {
         <div className={styles.headerInner}>
           <Link to="/" className={styles.wordmark}>
             <Mark className={styles.mark} />
-            {APP_NAME}
+            <span>
+              {APP_NAME.split(/(IQ)/).map((part, i) =>
+                part === 'IQ' ? (
+                  <span key={i} className={styles.wordmarkAccent}>
+                    {part}
+                  </span>
+                ) : (
+                  part
+                ),
+              )}
+            </span>
           </Link>
           <AppearanceMenu />
         </div>
