@@ -57,3 +57,13 @@ export const MAX_SEED = 0xffffffff;
 export function isSeed(value: unknown): value is number {
   return typeof value === 'number' && Number.isInteger(value) && value >= 0 && value <= MAX_SEED;
 }
+
+/** 32-bit FNV-1a hash, for deriving stable seeds from strings such as item ids. */
+export function hashString(s: string): number {
+  let h = 0x811c9dc5;
+  for (let i = 0; i < s.length; i++) {
+    h ^= s.charCodeAt(i);
+    h = Math.imul(h, 0x01000193);
+  }
+  return h >>> 0;
+}

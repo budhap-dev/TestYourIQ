@@ -59,8 +59,15 @@ Tests check every palette in both modes against WCAG 2.2 AA contrast.
   answer by regenerating the item from its key (`checkAnswer`). ESLint stops UI code importing
   generators.
 
-While running `npm run dev`, open **http://localhost:5173/dev/puzzles** to browse generated
-items by level and seed, with the rules and answer. This page isn't in production builds.
+| Area      | Generators / source                                                       |
+| --------- | ------------------------------------------------------------------------- |
+| Pattern   | `matrix`: 3×3 grids                                                       |
+| Numerical | `series`: number series · `number-analogy`: x → y rules                   |
+| Spatial   | `rotation`: same shape turned · `mirror`: mirror image                    |
+| Verbal    | `src/engine/verbal/bank.adult.json` and `bank.junior.json` (hand-written) |
+
+While running `npm run dev`, open **http://localhost:5173/dev/puzzles** to browse any item by
+type, level and seed, with its rule and answer. This page isn't in production builds.
 
 ## Project layout
 

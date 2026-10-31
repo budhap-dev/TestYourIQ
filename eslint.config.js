@@ -43,12 +43,8 @@ export default tseslint.config(
         {
           patterns: [
             {
-              group: [
-                '**/engine/generators',
-                '**/engine/*/generate',
-                '**/engine/*/solve',
-                '**/engine/*/rules',
-              ],
+              // Only content types, renderers and shared helpers may reach the browser.
+              regex: '(^|/)engine/(?!(types|svg|[a-z]+/(model|render))$)',
               message: 'Answer-generating engine code must stay on the server.',
             },
           ],

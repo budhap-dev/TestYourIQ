@@ -1,0 +1,754 @@
+[
+  {
+    "id": "j-an-001",
+    "type": "analogy",
+    "difficulty": 1,
+    "stem": ["bird", "nest", "dog"],
+    "answer": "kennel",
+    "distractors": ["bone", "puppy", "bark"]
+  },
+  {
+    "id": "j-an-002",
+    "type": "analogy",
+    "difficulty": 1,
+    "stem": ["hot", "cold", "up"],
+    "answer": "down",
+    "distractors": ["high", "sky", "top"]
+  },
+  {
+    "id": "j-an-003",
+    "type": "analogy",
+    "difficulty": 1,
+    "stem": ["cat", "kitten", "dog"],
+    "answer": "puppy",
+    "distractors": ["bone", "cub", "bark"]
+  },
+  {
+    "id": "j-an-004",
+    "type": "analogy",
+    "difficulty": 1,
+    "stem": ["hand", "finger", "foot"],
+    "answer": "toe",
+    "distractors": ["shoe", "leg", "sock"]
+  },
+  {
+    "id": "j-an-005",
+    "type": "analogy",
+    "difficulty": 1,
+    "stem": ["day", "night", "summer"],
+    "answer": "winter",
+    "distractors": ["sun", "holiday", "spring"]
+  },
+  {
+    "id": "j-an-006",
+    "type": "analogy",
+    "difficulty": 1,
+    "stem": ["fish", "swim", "bird"],
+    "answer": "fly",
+    "distractors": ["nest", "egg", "feather"]
+  },
+  {
+    "id": "j-an-007",
+    "type": "analogy",
+    "difficulty": 1,
+    "stem": ["apple", "fruit", "carrot"],
+    "answer": "vegetable",
+    "distractors": ["orange", "rabbit", "soup"]
+  },
+  {
+    "id": "j-an-008",
+    "type": "analogy",
+    "difficulty": 1,
+    "stem": ["cow", "moo", "sheep"],
+    "answer": "baa",
+    "distractors": ["wool", "lamb", "field"]
+  },
+  {
+    "id": "j-an-009",
+    "type": "analogy",
+    "difficulty": 1,
+    "stem": ["book", "read", "song"],
+    "answer": "sing",
+    "distractors": ["music", "radio", "loud"]
+  },
+  {
+    "id": "j-an-010",
+    "type": "analogy",
+    "difficulty": 1,
+    "stem": ["glove", "hand", "hat"],
+    "answer": "head",
+    "distractors": ["hair", "cap", "coat"]
+  },
+  {
+    "id": "j-an-011",
+    "type": "analogy",
+    "difficulty": 1,
+    "stem": ["big", "small", "tall"],
+    "answer": "short",
+    "distractors": ["long", "huge", "giant"]
+  },
+  {
+    "id": "j-an-012",
+    "type": "analogy",
+    "difficulty": 2,
+    "stem": ["one", "first", "two"],
+    "answer": "second",
+    "distractors": ["third", "double", "pair"]
+  },
+  {
+    "id": "j-an-013",
+    "type": "analogy",
+    "difficulty": 1,
+    "stem": ["eye", "see", "ear"],
+    "answer": "hear",
+    "distractors": ["sound", "nose", "head"]
+  },
+  {
+    "id": "j-an-014",
+    "type": "analogy",
+    "difficulty": 1,
+    "stem": ["bee", "honey", "cow"],
+    "answer": "milk",
+    "distractors": ["grass", "farm", "calf"]
+  },
+  {
+    "id": "j-an-015",
+    "type": "analogy",
+    "difficulty": 1,
+    "stem": ["fast", "slow", "happy"],
+    "answer": "sad",
+    "distractors": ["smile", "glad", "funny"]
+  },
+  {
+    "id": "j-an-016",
+    "type": "analogy",
+    "difficulty": 2,
+    "stem": ["scissors", "cut", "broom"],
+    "answer": "sweep",
+    "distractors": ["floor", "handle", "cupboard"]
+  },
+  {
+    "id": "j-an-017",
+    "type": "analogy",
+    "difficulty": 1,
+    "stem": ["car", "road", "train"],
+    "answer": "track",
+    "distractors": ["station", "driver", "ticket"]
+  },
+  {
+    "id": "j-an-018",
+    "type": "analogy",
+    "difficulty": 1,
+    "stem": ["Monday", "Tuesday", "Saturday"],
+    "answer": "Sunday",
+    "distractors": ["Friday", "week", "weekend"]
+  },
+  {
+    "id": "j-an-019",
+    "type": "analogy",
+    "difficulty": 1,
+    "stem": ["ice", "cold", "fire"],
+    "answer": "hot",
+    "distractors": ["smoke", "wood", "red"]
+  },
+  {
+    "id": "j-an-020",
+    "type": "analogy",
+    "difficulty": 2,
+    "stem": ["baker", "bread", "farmer"],
+    "answer": "crops",
+    "distractors": ["tractor", "field", "barn"]
+  },
+  {
+    "id": "j-an-021",
+    "type": "analogy",
+    "difficulty": 2,
+    "stem": ["lion", "roar", "snake"],
+    "answer": "hiss",
+    "distractors": ["slither", "bite", "fang"]
+  },
+  {
+    "id": "j-an-022",
+    "type": "analogy",
+    "difficulty": 2,
+    "stem": ["tree", "leaf", "flower"],
+    "answer": "petal",
+    "distractors": ["garden", "bee", "vase"]
+  },
+  {
+    "id": "j-an-023",
+    "type": "analogy",
+    "difficulty": 2,
+    "stem": ["pen", "ink", "car"],
+    "answer": "petrol",
+    "distractors": ["wheel", "road", "engine"]
+  },
+  {
+    "id": "j-an-024",
+    "type": "analogy",
+    "difficulty": 1,
+    "stem": ["doctor", "hospital", "teacher"],
+    "answer": "school",
+    "distractors": ["pupil", "lesson", "book"]
+  },
+  {
+    "id": "j-an-025",
+    "type": "analogy",
+    "difficulty": 2,
+    "stem": ["morning", "breakfast", "evening"],
+    "answer": "dinner",
+    "distractors": ["night", "lunch", "moon"]
+  },
+  {
+    "id": "j-an-026",
+    "type": "analogy",
+    "difficulty": 2,
+    "stem": ["three", "triangle", "four"],
+    "answer": "square",
+    "distractors": ["circle", "corner", "five"]
+  },
+  {
+    "id": "j-an-027",
+    "type": "analogy",
+    "difficulty": 1,
+    "stem": ["grass", "green", "sky"],
+    "answer": "blue",
+    "distractors": ["cloud", "high", "rain"]
+  },
+  {
+    "id": "j-an-028",
+    "type": "analogy",
+    "difficulty": 2,
+    "stem": ["child", "children", "mouse"],
+    "answer": "mice",
+    "distractors": ["mouses", "cheese", "rat"]
+  },
+  {
+    "id": "j-an-029",
+    "type": "analogy",
+    "difficulty": 3,
+    "stem": ["run", "ran", "swim"],
+    "answer": "swam",
+    "distractors": ["swum", "swimming", "water"]
+  },
+  {
+    "id": "j-an-030",
+    "type": "analogy",
+    "difficulty": 1,
+    "stem": ["hungry", "eat", "tired"],
+    "answer": "sleep",
+    "distractors": ["bed", "yawn", "night"]
+  },
+  {
+    "id": "j-an-031",
+    "type": "analogy",
+    "difficulty": 1,
+    "stem": ["foot", "sock", "hand"],
+    "answer": "glove",
+    "distractors": ["arm", "finger", "clap"]
+  },
+  {
+    "id": "j-an-032",
+    "type": "analogy",
+    "difficulty": 1,
+    "stem": ["sun", "day", "moon"],
+    "answer": "night",
+    "distractors": ["star", "sky", "cheese"]
+  },
+  {
+    "id": "j-an-033",
+    "type": "analogy",
+    "difficulty": 1,
+    "stem": ["kitten", "cat", "calf"],
+    "answer": "cow",
+    "distractors": ["horse", "milk", "farm"]
+  },
+  {
+    "id": "j-an-034",
+    "type": "analogy",
+    "difficulty": 2,
+    "stem": ["ocean", "water", "desert"],
+    "answer": "sand",
+    "distractors": ["camel", "hot", "sun"]
+  },
+  {
+    "id": "j-an-035",
+    "type": "analogy",
+    "difficulty": 2,
+    "stem": ["painter", "brush", "writer"],
+    "answer": "pen",
+    "distractors": ["book", "story", "paper"]
+  },
+  {
+    "id": "j-an-036",
+    "type": "analogy",
+    "difficulty": 1,
+    "stem": ["quiet", "loud", "empty"],
+    "answer": "full",
+    "distractors": ["cup", "nothing", "open"]
+  },
+  {
+    "id": "j-an-037",
+    "type": "analogy",
+    "difficulty": 2,
+    "stem": ["leg", "knee", "arm"],
+    "answer": "elbow",
+    "distractors": ["hand", "finger", "muscle"]
+  },
+  {
+    "id": "j-an-038",
+    "type": "analogy",
+    "difficulty": 2,
+    "stem": ["pig", "sty", "horse"],
+    "answer": "stable",
+    "distractors": ["saddle", "hay", "carrot"]
+  },
+  {
+    "id": "j-an-039",
+    "type": "analogy",
+    "difficulty": 2,
+    "stem": ["caterpillar", "butterfly", "tadpole"],
+    "answer": "frog",
+    "distractors": ["fish", "pond", "egg"]
+  },
+  {
+    "id": "j-an-040",
+    "type": "analogy",
+    "difficulty": 3,
+    "stem": ["frozen", "ice", "boiling"],
+    "answer": "steam",
+    "distractors": ["kettle", "cold", "cup"]
+  },
+  {
+    "id": "j-an-041",
+    "type": "analogy",
+    "difficulty": 1,
+    "stem": ["under", "over", "inside"],
+    "answer": "outside",
+    "distractors": ["in", "house", "below"]
+  },
+  {
+    "id": "j-an-042",
+    "type": "analogy",
+    "difficulty": 2,
+    "stem": ["eight", "four", "ten"],
+    "answer": "five",
+    "distractors": ["two", "twenty", "six"]
+  },
+  {
+    "id": "j-an-043",
+    "type": "analogy",
+    "difficulty": 2,
+    "stem": ["wheel", "bicycle", "wing"],
+    "answer": "aeroplane",
+    "distractors": ["sky", "pilot", "cloud"]
+  },
+  {
+    "id": "j-an-044",
+    "type": "analogy",
+    "difficulty": 3,
+    "stem": ["clock", "time", "thermometer"],
+    "answer": "temperature",
+    "distractors": ["hot", "doctor", "weather"]
+  },
+  {
+    "id": "j-an-045",
+    "type": "analogy",
+    "difficulty": 3,
+    "stem": ["never", "always", "nobody"],
+    "answer": "everybody",
+    "distractors": ["somebody", "anyone", "people"]
+  },
+  {
+    "id": "j-an-046",
+    "type": "analogy",
+    "difficulty": 1,
+    "stem": ["teeth", "chew", "nose"],
+    "answer": "smell",
+    "distractors": ["face", "tissue", "cold"]
+  },
+  {
+    "id": "j-an-047",
+    "type": "analogy",
+    "difficulty": 2,
+    "stem": ["seed", "plant", "egg"],
+    "answer": "bird",
+    "distractors": ["nest", "shell", "yolk"]
+  },
+  {
+    "id": "j-an-048",
+    "type": "analogy",
+    "difficulty": 2,
+    "stem": ["mother", "daughter", "father"],
+    "answer": "son",
+    "distractors": ["brother", "uncle", "baby"]
+  },
+  {
+    "id": "j-an-049",
+    "type": "analogy",
+    "difficulty": 2,
+    "stem": ["shoe", "foot", "ring"],
+    "answer": "finger",
+    "distractors": ["gold", "necklace", "ear"]
+  },
+  {
+    "id": "j-an-050",
+    "type": "analogy",
+    "difficulty": 2,
+    "stem": ["red", "stop", "green"],
+    "answer": "go",
+    "distractors": ["grass", "colour", "wait"]
+  },
+  {
+    "id": "j-an-051",
+    "type": "analogy",
+    "difficulty": 2,
+    "stem": ["rain", "umbrella", "cold"],
+    "answer": "coat",
+    "distractors": ["snow", "winter", "ice"]
+  },
+  {
+    "id": "j-an-052",
+    "type": "analogy",
+    "difficulty": 2,
+    "stem": ["wet", "dry", "dirty"],
+    "answer": "clean",
+    "distractors": ["mud", "wash", "soap"]
+  },
+  {
+    "id": "j-an-053",
+    "type": "analogy",
+    "difficulty": 1,
+    "stem": ["dog", "bark", "duck"],
+    "answer": "quack",
+    "distractors": ["pond", "swim", "feather"]
+  },
+  {
+    "id": "j-an-054",
+    "type": "analogy",
+    "difficulty": 3,
+    "stem": ["left", "right", "north"],
+    "answer": "south",
+    "distractors": ["east", "map", "cold"]
+  },
+  {
+    "id": "j-oo-001",
+    "type": "odd-one-out",
+    "difficulty": 1,
+    "answer": "carrot",
+    "others": ["apple", "banana", "pear", "grape"],
+    "reason": "the others are fruit"
+  },
+  {
+    "id": "j-oo-002",
+    "type": "odd-one-out",
+    "difficulty": 1,
+    "answer": "chair",
+    "others": ["red", "blue", "green", "yellow"],
+    "reason": "the others are colours"
+  },
+  {
+    "id": "j-oo-003",
+    "type": "odd-one-out",
+    "difficulty": 1,
+    "answer": "table",
+    "others": ["dog", "cat", "rabbit", "hamster"],
+    "reason": "the others are animals"
+  },
+  {
+    "id": "j-oo-004",
+    "type": "odd-one-out",
+    "difficulty": 1,
+    "answer": "house",
+    "others": ["car", "bus", "lorry", "van"],
+    "reason": "the others are vehicles"
+  },
+  {
+    "id": "j-oo-005",
+    "type": "odd-one-out",
+    "difficulty": 1,
+    "answer": "sad",
+    "others": ["happy", "glad", "cheerful", "jolly"],
+    "reason": "the others mean happy"
+  },
+  {
+    "id": "j-oo-006",
+    "type": "odd-one-out",
+    "difficulty": 3,
+    "answer": "cube",
+    "others": ["circle", "square", "triangle", "rectangle"],
+    "reason": "the others are flat shapes"
+  },
+  {
+    "id": "j-oo-007",
+    "type": "odd-one-out",
+    "difficulty": 2,
+    "answer": "radio",
+    "others": ["piano", "guitar", "drum", "violin"],
+    "reason": "the others are musical instruments"
+  },
+  {
+    "id": "j-oo-008",
+    "type": "odd-one-out",
+    "difficulty": 1,
+    "answer": "spoon",
+    "others": ["shirt", "jumper", "coat", "dress"],
+    "reason": "the others are clothes"
+  },
+  {
+    "id": "j-oo-009",
+    "type": "odd-one-out",
+    "difficulty": 1,
+    "answer": "Monday",
+    "others": ["January", "March", "May", "July"],
+    "reason": "the others are months"
+  },
+  {
+    "id": "j-oo-010",
+    "type": "odd-one-out",
+    "difficulty": 2,
+    "answer": "bat",
+    "others": ["eagle", "robin", "owl", "sparrow"],
+    "reason": "the others are birds"
+  },
+  {
+    "id": "j-oo-011",
+    "type": "odd-one-out",
+    "difficulty": 2,
+    "answer": "cloud",
+    "others": ["sun", "moon", "star", "planet"],
+    "reason": "the others are out in space"
+  },
+  {
+    "id": "j-oo-012",
+    "type": "odd-one-out",
+    "difficulty": 2,
+    "answer": "sit",
+    "others": ["run", "jump", "skip", "hop"],
+    "reason": "the others are ways of moving"
+  },
+  {
+    "id": "j-oo-013",
+    "type": "odd-one-out",
+    "difficulty": 2,
+    "answer": "nine",
+    "others": ["two", "four", "six", "eight"],
+    "reason": "the others are even numbers"
+  },
+  {
+    "id": "j-oo-014",
+    "type": "odd-one-out",
+    "difficulty": 1,
+    "answer": "tiny",
+    "others": ["big", "huge", "giant", "enormous"],
+    "reason": "the others mean very big"
+  },
+  {
+    "id": "j-oo-015",
+    "type": "odd-one-out",
+    "difficulty": 1,
+    "answer": "bread",
+    "others": ["milk", "water", "juice", "tea"],
+    "reason": "the others are drinks"
+  },
+  {
+    "id": "j-oo-016",
+    "type": "odd-one-out",
+    "difficulty": 1,
+    "answer": "horse",
+    "others": ["shark", "whale", "dolphin", "octopus"],
+    "reason": "the others live in the sea"
+  },
+  {
+    "id": "j-oo-017",
+    "type": "odd-one-out",
+    "difficulty": 2,
+    "answer": "oak",
+    "others": ["rose", "daisy", "tulip", "daffodil"],
+    "reason": "the others are flowers"
+  },
+  {
+    "id": "j-oo-018",
+    "type": "odd-one-out",
+    "difficulty": 2,
+    "answer": "ruler",
+    "others": ["pen", "pencil", "crayon", "marker"],
+    "reason": "the others are for writing or drawing"
+  },
+  {
+    "id": "j-oo-019",
+    "type": "odd-one-out",
+    "difficulty": 2,
+    "answer": "sheep",
+    "others": ["kitten", "puppy", "calf", "lamb"],
+    "reason": "the others are baby animals"
+  },
+  {
+    "id": "j-oo-020",
+    "type": "odd-one-out",
+    "difficulty": 2,
+    "answer": "knee",
+    "others": ["nose", "eye", "ear", "mouth"],
+    "reason": "the others are on your face"
+  },
+  {
+    "id": "j-oo-021",
+    "type": "odd-one-out",
+    "difficulty": 2,
+    "answer": "morning",
+    "others": ["spring", "summer", "autumn", "winter"],
+    "reason": "the others are seasons"
+  },
+  {
+    "id": "j-oo-022",
+    "type": "odd-one-out",
+    "difficulty": 3,
+    "answer": "soup",
+    "others": ["bread", "cake", "biscuit", "pie"],
+    "reason": "the others are baked"
+  },
+  {
+    "id": "j-oo-023",
+    "type": "odd-one-out",
+    "difficulty": 3,
+    "answer": "spider",
+    "others": ["ant", "bee", "beetle", "butterfly"],
+    "reason": "the others are insects"
+  },
+  {
+    "id": "j-oo-024",
+    "type": "odd-one-out",
+    "difficulty": 2,
+    "answer": "freezing",
+    "others": ["hot", "warm", "boiling", "scorching"],
+    "reason": "the others mean hot"
+  },
+  {
+    "id": "j-oo-025",
+    "type": "odd-one-out",
+    "difficulty": 4,
+    "answer": "nine",
+    "others": ["three", "five", "seven", "eleven"],
+    "reason": "the others are prime numbers"
+  },
+  {
+    "id": "j-oo-026",
+    "type": "odd-one-out",
+    "difficulty": 3,
+    "answer": "whisper",
+    "others": ["shout", "yell", "scream", "roar"],
+    "reason": "the others are loud"
+  },
+  {
+    "id": "j-oo-027",
+    "type": "odd-one-out",
+    "difficulty": 3,
+    "answer": "France",
+    "others": ["London", "Paris", "Madrid", "Rome"],
+    "reason": "the others are cities"
+  },
+  {
+    "id": "j-oo-028",
+    "type": "odd-one-out",
+    "difficulty": 2,
+    "answer": "plate",
+    "others": ["cup", "mug", "glass", "beaker"],
+    "reason": "the others hold drinks"
+  },
+  {
+    "id": "j-oo-029",
+    "type": "odd-one-out",
+    "difficulty": 4,
+    "answer": "lizard",
+    "others": ["frog", "newt", "toad", "salamander"],
+    "reason": "the others are amphibians"
+  },
+  {
+    "id": "j-oo-030",
+    "type": "odd-one-out",
+    "difficulty": 2,
+    "answer": "slow",
+    "others": ["quick", "fast", "speedy", "rapid"],
+    "reason": "the others mean fast"
+  },
+  {
+    "id": "j-oo-031",
+    "type": "odd-one-out",
+    "difficulty": 2,
+    "answer": "rude",
+    "others": ["kind", "friendly", "helpful", "caring"],
+    "reason": "the others are nice ways to be"
+  },
+  {
+    "id": "j-oo-032",
+    "type": "odd-one-out",
+    "difficulty": 1,
+    "answer": "sofa",
+    "others": ["hammer", "saw", "drill", "screwdriver"],
+    "reason": "the others are tools"
+  },
+  {
+    "id": "j-oo-033",
+    "type": "odd-one-out",
+    "difficulty": 3,
+    "answer": "banana",
+    "others": ["cherry", "strawberry", "raspberry", "tomato"],
+    "reason": "the others are red"
+  },
+  {
+    "id": "j-oo-034",
+    "type": "odd-one-out",
+    "difficulty": 3,
+    "answer": "fifty-five",
+    "others": ["ten", "twenty", "thirty", "forty"],
+    "reason": "the others are in the ten times table"
+  },
+  {
+    "id": "j-oo-035",
+    "type": "odd-one-out",
+    "difficulty": 3,
+    "answer": "climb",
+    "others": ["swim", "dive", "splash", "paddle"],
+    "reason": "the others happen in water"
+  },
+  {
+    "id": "j-oo-036",
+    "type": "odd-one-out",
+    "difficulty": 3,
+    "answer": "timid",
+    "others": ["brave", "bold", "fearless", "daring"],
+    "reason": "the others mean brave"
+  },
+  {
+    "id": "j-oo-037",
+    "type": "odd-one-out",
+    "difficulty": 1,
+    "answer": "mountain",
+    "others": ["lake", "river", "sea", "pond"],
+    "reason": "the others are water"
+  },
+  {
+    "id": "j-oo-038",
+    "type": "odd-one-out",
+    "difficulty": 2,
+    "answer": "bowl",
+    "others": ["knife", "fork", "spoon", "chopsticks"],
+    "reason": "the others are for eating with"
+  },
+  {
+    "id": "j-oo-039",
+    "type": "odd-one-out",
+    "difficulty": 3,
+    "answer": "penguin",
+    "others": ["eagle", "hawk", "owl", "robin"],
+    "reason": "the others can fly"
+  },
+  {
+    "id": "j-oo-040",
+    "type": "odd-one-out",
+    "difficulty": 4,
+    "answer": "thirteen",
+    "others": ["twelve", "twenty-four", "thirty-six", "forty-eight"],
+    "reason": "the others are in the twelve times table"
+  }
+]

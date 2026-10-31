@@ -1,6 +1,6 @@
 // @vitest-environment node
 import { describe, expect, it } from 'vitest';
-import { checkAnswer, itemFromKey } from '../../src/engine/generators';
+import { GENERATORS, checkAnswer, itemFromKey } from '../../src/engine/generators';
 import { bankKey, generatedKey, parseItemKey } from '../../src/engine/itemKey';
 import { generateMatrix } from '../../src/engine/matrix/generate';
 import { toPublicItem } from '../../src/engine/types';
@@ -54,21 +54,30 @@ describe('answer checking', () => {
 });
 
 describe('public items', () => {
-  it('carry no answer, key, seed, rules or IRT parameters', () => {
-    const item = generateMatrix(77, 5);
-    const pub = toPublicItem(item);
-    expect(Object.keys(pub).sort()).toEqual(['area', 'content', 'optionCount']);
-    const json = JSON.stringify(pub);
-    for (const secret of [
-      'answer',
-      'key',
-      'seed',
-      'explanation',
-      'irt',
-      'progression',
-      'distribute',
-    ]) {
-      expect(json).not.toContain(secret);
-    }
-  });
+  const items = [
+    ...Object.values(GENERATORS).map((g) => g.generate(77, 5)),
+    itemFromKey('bank:a-an-001'),
+    itemFromKey('bank:j-oo-001'),
+  ];
+
+  it.each(items.map((i) => [i?.key ?? 'missing', i] as const))(
+    '%s carries no answer, key, seed, rules or IRT parameters',
+    (_key, item) => {
+      if (!item) throw new Error('missing item');
+      const pub = toPublicItem(item);
+      expect(Object.keys(pub).sort()).toEqual(['area', 'content', 'optionCount']);
+      const json = JSON.stringify(pub);
+      for (const secret of [
+        'answer',
+        '"key"',
+        'seed',
+        'explanation',
+        'irt',
+        'reason',
+        item.explanation,
+      ]) {
+        expect(json).not.toContain(secret);
+      }
+    },
+  );
 });

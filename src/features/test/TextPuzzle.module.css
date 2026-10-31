@@ -1,0 +1,86 @@
+.puzzle {
+  display: grid;
+  gap: var(--space-6);
+  justify-items: center;
+}
+
+.prompt {
+  display: grid;
+  gap: var(--space-3);
+  justify-items: center;
+  text-align: center;
+  max-width: 40rem;
+}
+
+.question {
+  font-size: var(--text-md);
+  color: var(--text-muted);
+}
+
+.sequence {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: var(--space-2);
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.term,
+.blank {
+  min-width: 3.25rem;
+  padding: var(--space-2) var(--space-3);
+  border-radius: var(--radius-md);
+  font-family: var(--font-display);
+  font-size: var(--text-xl);
+  font-variant-numeric: tabular-nums lining-nums;
+  text-align: center;
+}
+
+.term {
+  background: var(--surface);
+  border: var(--border-width) solid var(--border);
+}
+
+.blank {
+  border: 2px dashed var(--accent);
+  color: var(--accent);
+}
+
+.pairs {
+  display: grid;
+  gap: var(--space-2);
+  margin: 0;
+  padding: 0;
+  list-style: none;
+  font-family: var(--font-display);
+  font-size: var(--text-xl);
+  font-variant-numeric: tabular-nums lining-nums;
+}
+
+.pair {
+  display: grid;
+  grid-template-columns: 4rem 2rem 4rem;
+  align-items: center;
+  justify-items: center;
+}
+
+.arrow {
+  color: var(--text-muted);
+}
+
+.analogy {
+  font-family: var(--font-display);
+  font-size: var(--text-xl);
+  line-height: 1.4;
+}
+
+.analogy strong {
+  font-weight: 600;
+  color: var(--accent);
+}
+
+.options {
+  font-variant-numeric: tabular-nums;
+}
