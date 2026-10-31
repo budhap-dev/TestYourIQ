@@ -1,6 +1,6 @@
 import { useEffect, useId, useState, type FormEvent } from 'react';
 import { useNavigate } from 'react-router';
-import { Button } from '../../components/Button';
+import { Button, ButtonLink } from '../../components/Button';
 import { Notice } from '../../components/Notice';
 import { ADULT_AGE, MAX_AGE, MIN_AGE, ageFromDateOfBirth } from '../../features/test/age';
 import { PracticeRound } from '../../features/test/PracticeRound';
@@ -86,6 +86,19 @@ export function Setup() {
               : 'Ready when you are'}
         </h1>
       </header>
+
+      {history?.inProgress && step === 'about' && (
+        <Notice title="You have a test in progress" tone="neutral">
+          <p>
+            You can carry on where you left off. Starting a new test will end the unfinished one.
+          </p>
+          <p style={{ marginTop: 'var(--space-3)' }}>
+            <ButtonLink to={`/test/${history.inProgress.attemptId}`} variant="secondary">
+              Resume my test
+            </ButtonLink>
+          </p>
+        </Notice>
+      )}
 
       {retake && step !== 'practice' && (
         <Notice title="You’ve taken this test before">

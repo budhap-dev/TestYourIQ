@@ -1,6 +1,7 @@
 // @vitest-environment node
 import { beforeEach, describe, expect, it } from 'vitest';
 import { BLUEPRINTS } from '../../src/engine/assembly';
+import { contentFingerprint } from '../../src/engine/fingerprint';
 import { itemFromKey } from '../../src/engine/generators';
 import { VERBAL_BANK } from '../../src/engine/verbal/bank';
 import {
@@ -149,6 +150,22 @@ describe('retakes', () => {
     expect(store.attempts.get(second.started.attemptId)?.eligibleForNorms).toBe(false);
   });
 
+  it('never shows the same puzzle twice across 20 retakes, even from a different seed', async () => {
+    let takerId: string | null = null;
+    const shown: string[] = [];
+    for (let i = 0; i < 20; i++) {
+      tick(2 * 60 * 60 * 1000);
+      const run = await takeTest(30, i % 2 ? allRight : allWrong, { takerId });
+      takerId = run.takerId;
+      for (const key of keysOf(run.started.attemptId)) {
+        const item = itemFromKey(key);
+        if (item) shown.push(contentFingerprint(item.content));
+      }
+    }
+    expect(shown.length).toBeGreaterThan(600);
+    expect(new Set(shown).size).toBe(shown.length);
+  }, 60_000);
+
   it('keeps junior verbal items unique across many retakes, then runs short', async () => {
     let takerId: string | null = null;
     const verbalSeen: string[] = [];
@@ -175,6 +192,14 @@ describe('retakes', () => {
         responseMs: 5000,
       }),
     ).rejects.toMatchObject({ status: 409 });
+  });
+
+  it('reports an unfinished test that can be resumed, until it ends', async () => {
+    const started = await createAttempt(deps, null, { age: 30, consentResearch: true });
+    const takerId = verifyTakerToken(started.takerToken, keys);
+    expect((await getTaker(deps, takerId)).inProgress?.attemptId).toBe(started.attemptId);
+    tick(ABANDON_AFTER_MS + 1);
+    expect((await getTaker(deps, takerId)).inProgress).toBeNull();
   });
 
   it('reports earlier results for the setup page', async () => {

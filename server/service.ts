@@ -14,6 +14,7 @@ import {
   paramKey,
   templateKey,
 } from '../src/engine/generators.js';
+import { contentFingerprint } from '../src/engine/fingerprint.js';
 import { estimateAbility, type Response } from '../src/engine/irt.js';
 import { generatedKey } from '../src/engine/itemKey.js';
 import { SEED_NORMS, bandForAge, type Norm } from '../src/engine/norms.js';
@@ -62,6 +63,7 @@ export const RATE_LIMIT = { attempts: 5, windowMs: 60 * 60 * 1000 };
 export const SECTION_GRACE_MS = 10_000;
 /** In-progress attempts older than this are treated as abandoned. */
 export const ABANDON_AFTER_MS = 3 * 60 * 60 * 1000;
+const MAX_SEED_RETRIES = 200;
 
 // ---------------------------------------------------------------------------------------------
 // Public shapes live in src/shared/api.ts so the browser can use them too.
@@ -159,13 +161,16 @@ function chooseItem(attempt: AttemptRow, ctx: Context): { item: Item; irt: IrtPa
   });
   const pick = selectCandidate(plan, slot, used, theta, candidates);
   if (!pick) return null;
-  // Seeds come from the server-only form seed; a clash with a seen item just moves on.
-  for (let retry = 0; ; retry++) {
+  // Seeds come from the server-only form seed. A seed or a puzzle already seen moves on to the
+  // next seed; after many clashes (a near-exhausted level) the last candidate is used.
+  let item: Item | null = null;
+  for (let retry = 0; retry < MAX_SEED_RETRIES; retry++) {
     const seed = hashString(`${attempt.formSeed}:${position}:${retry}`);
-    if (!ctx.seen.has(generatedKey(gen.id, gen.version, pick.difficulty, seed))) {
-      return { item: gen.generate(seed, pick.difficulty), irt: pick.irt };
-    }
+    if (ctx.seen.has(generatedKey(gen.id, gen.version, pick.difficulty, seed))) continue;
+    item = gen.generate(seed, pick.difficulty);
+    if (!ctx.seen.has(contentFingerprint(item.content))) break;
   }
+  return item && { item, irt: pick.irt };
 }
 
 /** Move to the next item, skipping empty slots and finished sections. Marks it as seen. */
@@ -201,8 +206,10 @@ async function presentNext(
       itemKey: chosen.item.key,
       issuedAt: now.toISOString(),
     };
-    await tx.addSeen(attempt.testTakerId, chosen.item.key, now);
-    ctx.seen.add(chosen.item.key);
+    for (const key of [chosen.item.key, contentFingerprint(chosen.item.content)]) {
+      await tx.addSeen(attempt.testTakerId, key, now);
+      ctx.seen.add(key);
+    }
     return chosen.item;
   }
 }
@@ -352,15 +359,27 @@ async function progress(
 // Operations
 
 export async function getTaker(deps: Deps, takerId: string | null): Promise<TakerSummary> {
-  if (!takerId) return { takerToken: null, completedBefore: 0, previous: null };
+  const none: TakerSummary = {
+    takerToken: null,
+    completedBefore: 0,
+    previous: null,
+    inProgress: null,
+  };
+  if (!takerId) return none;
+  const now = deps.now();
   return deps.store.transaction(async (tx) => {
     const taker = await tx.getTaker(takerId);
-    if (!taker) return { takerToken: null, completedBefore: 0, previous: null };
+    if (!taker) return none;
     const attempts = await tx.listAttempts(takerId);
+    const open = attempts.find(
+      (a) =>
+        a.status === 'in_progress' && now.getTime() - a.startedAt.getTime() <= ABANDON_AFTER_MS,
+    );
     return {
       takerToken: signTakerId(takerId, deps.keys),
       completedBefore: attempts.filter((a) => a.status === 'completed').length,
       previous: previousResult(attempts),
+      inProgress: open ? { attemptId: open.id, startedAt: open.startedAt.toISOString() } : null,
     };
   });
 }
