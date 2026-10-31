@@ -1,4 +1,4 @@
-import { oklchToHex } from './color.ts';
+import { oklchToHex } from './color';
 
 /**
  * Colour palettes. Each one is described by a few OKLCH parameters and expanded into a full
