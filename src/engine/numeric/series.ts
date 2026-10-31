@@ -1,9 +1,9 @@
-import { generatedKey } from '../itemKey';
-import { createRng, type Rng } from '../rng';
-import type { Difficulty, IrtParams, Item } from '../types';
-import type { SeriesContent } from './model';
-import { pickSpacedOptions } from './options';
-import { seriesPredictions } from './solve';
+import { generatedKey } from '../itemKey.js';
+import { createRng, type Rng } from '../rng.js';
+import type { Difficulty, IrtParams, Item } from '../types.js';
+import type { SeriesContent } from './model.js';
+import { pickSpacedOptions } from './options.js';
+import { seriesPredictions } from './solve.js';
 
 export const SERIES_GENERATOR_ID = 'series';
 export const SERIES_GENERATOR_VERSION = 1;

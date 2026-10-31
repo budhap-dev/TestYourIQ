@@ -1,5 +1,5 @@
-import type { Rng } from '../rng';
-import type { Cells } from './model';
+import type { Rng } from '../rng.js';
+import type { Cells } from './model.js';
 
 /** Geometry for shapes made of unit squares. Every function returns new arrays. */
 

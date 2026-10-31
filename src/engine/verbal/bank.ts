@@ -1,9 +1,9 @@
 import { z } from 'zod';
-import { createRng, hashString } from '../rng';
-import type { Difficulty, Item } from '../types';
-import adultBank from './bank.adult.json';
-import juniorBank from './bank.junior.json';
-import type { Track, VerbalContent } from './model';
+import { createRng, hashString } from '../rng.js';
+import type { Difficulty, Item } from '../types.js';
+import adultBank from './bank.adult.json' with { type: 'json' };
+import juniorBank from './bank.junior.json' with { type: 'json' };
+import type { Track, VerbalContent } from './model.js';
 
 /**
  * Hand-written verbal items. Each bank file is validated when this module loads. Options are

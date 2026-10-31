@@ -16,5 +16,5 @@
     "skipLibCheck": true,
     "noEmit": true
   },
-  "include": ["vite.config.ts", "vitest.config.ts", "scripts"]
+  "include": ["vite.config.ts", "vitest.config.ts", "vite-plugin-api.ts"]
 }

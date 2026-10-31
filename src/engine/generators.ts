@@ -1,20 +1,32 @@
-import { parseItemKey } from './itemKey';
-import { MATRIX_GENERATOR_ID, MATRIX_GENERATOR_VERSION, generateMatrix } from './matrix/generate';
+import { parseItemKey } from './itemKey.js';
+import {
+  MATRIX_GENERATOR_ID,
+  MATRIX_GENERATOR_VERSION,
+  MATRIX_LEVELS,
+  generateMatrix,
+} from './matrix/generate.js';
 import {
   NUMBER_ANALOGY_GENERATOR_ID,
   NUMBER_ANALOGY_GENERATOR_VERSION,
+  NUMBER_ANALOGY_LEVELS,
   generateNumberAnalogy,
-} from './numeric/analogy';
-import { SERIES_GENERATOR_ID, SERIES_GENERATOR_VERSION, generateSeries } from './numeric/series';
+} from './numeric/analogy.js';
+import {
+  SERIES_GENERATOR_ID,
+  SERIES_GENERATOR_VERSION,
+  SERIES_LEVELS,
+  generateSeries,
+} from './numeric/series.js';
 import {
   MIRROR_GENERATOR_ID,
   ROTATION_GENERATOR_ID,
   SPATIAL_GENERATOR_VERSION,
+  SPATIAL_LEVELS,
   generateMirror,
   generateRotation,
-} from './spatial/generate';
-import type { Area, Difficulty, Item } from './types';
-import { verbalItem } from './verbal/bank';
+} from './spatial/generate.js';
+import type { Area, Difficulty, IrtParams, Item } from './types.js';
+import { verbalItem } from './verbal/bank.js';
 
 /**
  * Registry of item generators and the verbal bank. Server-side only: this module knows the
@@ -25,6 +37,8 @@ export interface Generator {
   version: number;
   area: Area;
   generate(seed: number, difficulty: Difficulty): Item;
+  /** Seed IRT parameters for this generator at each difficulty. */
+  levels: Record<Difficulty, { irt: IrtParams }>;
 }
 
 const list: Generator[] = [
@@ -33,30 +47,35 @@ const list: Generator[] = [
     version: MATRIX_GENERATOR_VERSION,
     area: 'pattern',
     generate: generateMatrix,
+    levels: MATRIX_LEVELS,
   },
   {
     id: SERIES_GENERATOR_ID,
     version: SERIES_GENERATOR_VERSION,
     area: 'numerical',
     generate: generateSeries,
+    levels: SERIES_LEVELS,
   },
   {
     id: NUMBER_ANALOGY_GENERATOR_ID,
     version: NUMBER_ANALOGY_GENERATOR_VERSION,
     area: 'numerical',
     generate: generateNumberAnalogy,
+    levels: NUMBER_ANALOGY_LEVELS,
   },
   {
     id: ROTATION_GENERATOR_ID,
     version: SPATIAL_GENERATOR_VERSION,
     area: 'spatial',
     generate: generateRotation,
+    levels: SPATIAL_LEVELS,
   },
   {
     id: MIRROR_GENERATOR_ID,
     version: SPATIAL_GENERATOR_VERSION,
     area: 'spatial',
     generate: generateMirror,
+    levels: SPATIAL_LEVELS,
   },
 ];
 
@@ -77,3 +96,18 @@ export function checkAnswer(key: string, answerIndex: number | null): boolean {
   if (!item) throw new Error(`Unknown item key: ${key}`);
   return answerIndex !== null && answerIndex === item.answerIndex;
 }
+
+/**
+ * IRT parameters are stored per template: one row per generator, version and difficulty
+ * (`gen:matrix:v1:d3`), and one per bank item (`bank:a-an-001`).
+ */
+export function paramKey(itemKey: string): string {
+  const parsed = parseItemKey(itemKey);
+  if (!parsed) throw new Error(`Unknown item key: ${itemKey}`);
+  return parsed.kind === 'bank'
+    ? itemKey
+    : templateKey(parsed.generatorId, parsed.version, parsed.difficulty);
+}
+
+export const templateKey = (generatorId: string, version: number, difficulty: Difficulty) =>
+  `gen:${generatorId}:v${version}:d${difficulty}`;

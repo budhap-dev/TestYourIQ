@@ -1,9 +1,9 @@
-import { generatedKey } from '../itemKey';
-import { createRng, type Rng } from '../rng';
-import type { Difficulty, IrtParams, Item } from '../types';
-import type { NumberAnalogyContent } from './model';
-import { pickSpacedOptions } from './options';
-import { analogyPredictions } from './solve';
+import { generatedKey } from '../itemKey.js';
+import { createRng, type Rng } from '../rng.js';
+import type { Difficulty, IrtParams, Item } from '../types.js';
+import type { NumberAnalogyContent } from './model.js';
+import { pickSpacedOptions } from './options.js';
+import { analogyPredictions } from './solve.js';
 
 export const NUMBER_ANALOGY_GENERATOR_ID = 'number-analogy';
 export const NUMBER_ANALOGY_GENERATOR_VERSION = 1;

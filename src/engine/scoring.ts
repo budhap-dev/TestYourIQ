@@ -1,6 +1,6 @@
-import { estimateAbility, type Estimate, type Response } from './irt';
-import { CALIBRATION_THRESHOLD, type Norm } from './norms';
-import { AREAS, type Area } from './types';
+import { estimateAbility, type Estimate, type Response } from './irt.js';
+import { CALIBRATION_THRESHOLD, type Norm } from './norms.js';
+import { AREAS, type Area } from './types.js';
 
 export const IQ_MIN = 55;
 export const IQ_MAX = 145;

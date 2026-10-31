@@ -1,6 +1,6 @@
 import { writeFileSync } from 'node:fs';
 import { fileURLToPath } from 'node:url';
-import { renderThemesCss } from '../src/styles/palettes';
+import { renderThemesCss } from '../src/styles/palettes.js';
 
 const out = fileURLToPath(new URL('../src/styles/themes.css', import.meta.url));
 writeFileSync(out, renderThemesCss());

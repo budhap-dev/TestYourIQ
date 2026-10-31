@@ -1,6 +1,6 @@
-import { generatedKey } from '../itemKey';
-import { createRng, type Rng } from '../rng';
-import type { Difficulty, IrtParams, Item } from '../types';
+import { generatedKey } from '../itemKey.js';
+import { createRng, type Rng } from '../rng.js';
+import type { Difficulty, IrtParams, Item } from '../types.js';
 import {
   ATTRS,
   ATTR_INFO,
@@ -10,9 +10,9 @@ import {
   type Attr,
   type CellValues,
   type MatrixContent,
-} from './model';
-import { buildGrid, ruleFits, type Grid, type RuleSpec, type RuleType } from './rules';
-import { impliedValues } from './solve';
+} from './model.js';
+import { buildGrid, ruleFits, type Grid, type RuleSpec, type RuleType } from './rules.js';
+import { impliedValues } from './solve.js';
 
 export const MATRIX_GENERATOR_ID = 'matrix';
 export const MATRIX_GENERATOR_VERSION = 1;

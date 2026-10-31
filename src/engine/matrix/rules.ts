@@ -1,5 +1,5 @@
-import type { Rng } from '../rng';
-import { ATTR_INFO, type Attr } from './model';
+import type { Rng } from '../rng.js';
+import { ATTR_INFO, type Attr } from './model.js';
 
 /**
  * Rules say how one attribute changes across each row of the 3×3 grid.

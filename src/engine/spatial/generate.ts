@@ -1,7 +1,7 @@
-import { generatedKey } from '../itemKey';
-import { createRng, type Rng } from '../rng';
-import type { Difficulty, IrtParams, Item } from '../types';
-import type { Cells, SpatialContent, SpatialTask } from './model';
+import { generatedKey } from '../itemKey.js';
+import { createRng, type Rng } from '../rng.js';
+import type { Difficulty, IrtParams, Item } from '../types.js';
+import type { Cells, SpatialContent, SpatialTask } from './model.js';
 import {
   applyMoves,
   grow,
@@ -14,7 +14,7 @@ import {
   shapeKey,
   size,
   type Move,
-} from './polyomino';
+} from './polyomino.js';
 
 export const ROTATION_GENERATOR_ID = 'rotation';
 export const MIRROR_GENERATOR_ID = 'mirror';

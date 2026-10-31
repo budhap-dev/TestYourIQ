@@ -1,5 +1,5 @@
-import { isSeed } from './rng';
-import { isDifficulty, type Difficulty } from './types';
+import { isSeed } from './rng.js';
+import { isDifficulty, type Difficulty } from './types.js';
 
 /**
  * Item keys identify an item for seen-item tracking and answer checking.

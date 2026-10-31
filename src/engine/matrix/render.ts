@@ -1,5 +1,5 @@
-import type { SvgNode } from '../svg';
-import { SIZES, type Cell, type Shape } from './model';
+import type { SvgNode } from '../svg.js';
+import { SIZES, type Cell, type Shape } from './model.js';
 
 /**
  * Renders one matrix cell to a declarative SVG tree on a 100×100 canvas. Colours use
