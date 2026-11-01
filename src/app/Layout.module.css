@@ -101,8 +101,31 @@
   gap: var(--space-4);
 }
 
-.footerLinks a {
+.footerLinks a,
+.footerButton {
   display: inline-flex;
   align-items: center;
   min-height: var(--touch-min);
+}
+
+/* A button (it opens a dialog or steps, not a page) that looks like the links beside it. */
+.footerButton {
+  padding: 0;
+  border: 0;
+  background: none;
+  color: var(--accent);
+  text-decoration: underline;
+  text-underline-offset: 0.18em;
+  text-decoration-thickness: 1px;
+  cursor: pointer;
+}
+
+.footerButton:hover {
+  color: var(--accent-hover);
+  text-decoration-thickness: 2px;
+}
+
+.installSteps {
+  flex-basis: 100%;
+  color: var(--text);
 }

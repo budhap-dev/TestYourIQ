@@ -1,7 +1,8 @@
-import { useEffect, useRef } from 'react';
+import { useEffect, useRef, useState } from 'react';
 import { Link, Outlet, ScrollRestoration, useLocation } from 'react-router';
 import { AppearanceMenu } from '../components/AppearanceMenu';
 import { APP_NAME } from './config';
+import { promptInstall, useInstallOption } from './install';
 import styles from './Layout.module.css';
 
 function Mark({ className }: { className?: string | undefined }) {
@@ -43,6 +44,8 @@ export function Layout() {
   const { pathname } = useLocation();
   const mainRef = useRef<HTMLElement>(null);
   const isFirstRender = useRef(true);
+  const installOption = useInstallOption();
+  const [showIosSteps, setShowIosSteps] = useState(false);
 
   // Move focus to the main region on navigation so screen readers announce the new page.
   useEffect(() => {
@@ -86,8 +89,28 @@ export function Layout() {
         <div className={styles.footerInner}>
           <p>An estimate of reasoning ability, not a clinical assessment.</p>
           <nav aria-label="Footer" className={styles.footerLinks}>
+            {installOption && (
+              <button
+                type="button"
+                className={styles.footerButton}
+                aria-expanded={installOption === 'ios' ? showIosSteps : undefined}
+                aria-controls={installOption === 'ios' ? 'install-steps' : undefined}
+                onClick={() =>
+                  installOption === 'ios' ? setShowIosSteps((v) => !v) : void promptInstall()
+                }
+              >
+                Install app
+              </button>
+            )}
             <Link to="/privacy">Privacy</Link>
           </nav>
+          {installOption === 'ios' && showIosSteps && (
+            <p id="install-steps" className={styles.installSteps}>
+              To add {APP_NAME} to your home screen, tap <strong>Share</strong> in Safari (on newer
+              iPhones it’s in the <strong>⋯</strong> menu), then <strong>Add to Home Screen</strong>
+              .
+            </p>
+          )}
         </div>
       </footer>
       <ScrollRestoration />
