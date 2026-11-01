@@ -45,6 +45,15 @@ export function applyTheme(mode: ThemeMode, palette: PaletteId): void {
   write(PALETTE_KEY, palette === DEFAULT_PALETTE ? null : palette);
 }
 
+/** Matches the browser bar (and the installed app's title bar) to the current page background. */
+export function syncThemeColor(): void {
+  const bg = getComputedStyle(document.documentElement).getPropertyValue('--bg').trim();
+  if (!bg) return;
+  for (const meta of document.querySelectorAll<HTMLMetaElement>('meta[name="theme-color"]')) {
+    meta.content = bg;
+  }
+}
+
 export interface ThemeState {
   mode: ThemeMode;
   palette: PaletteId;

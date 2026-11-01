@@ -5,6 +5,7 @@ import {
   applyTheme,
   readStoredMode,
   readStoredPalette,
+  syncThemeColor,
   type ThemeMode,
   type ThemeState,
 } from './theme';
@@ -25,6 +26,8 @@ export function ThemeProvider({ children }: { children: ReactNode }) {
   const prefersDark = useSyncExternalStore(subscribeToSystemScheme, systemPrefersDark, () => false);
 
   useEffect(() => applyTheme(mode, palette), [mode, palette]);
+  // prefersDark is a dependency because "system" mode changes colour without changing state.
+  useEffect(syncThemeColor, [mode, palette, prefersDark]);
 
   const value = useMemo<ThemeState>(
     () => ({

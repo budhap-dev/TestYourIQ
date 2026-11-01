@@ -17,6 +17,7 @@
     "test": "vitest run",
     "test:watch": "vitest",
     "gen:themes": "tsx scripts/gen-themes.ts && prettier --write src/styles/themes.css",
+    "gen:icons": "tsx scripts/gen-icons.ts",
     "migrate": "tsx scripts/migrate.ts",
     "seed": "tsx scripts/seed.ts",
     "db:setup": "npm run migrate && npm run seed",

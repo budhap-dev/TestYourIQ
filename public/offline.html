@@ -1,0 +1,103 @@
+<!doctype html>
+<html lang="en-GB">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="color-scheme" content="light dark" />
+    <title>Offline · unIQo</title>
+    <style>
+      :root {
+        --bg: #f9f5f0;
+        --text: #1e1a14;
+        --muted: #615d56;
+        --accent: #005f79;
+        --accent-contrast: #f8fdfe;
+      }
+      @media (prefers-color-scheme: dark) {
+        :root {
+          --bg: #13100b;
+          --text: #ebe7e1;
+          --muted: #afaaa3;
+          --accent: #87c9e3;
+          --accent-contrast: #02141b;
+        }
+      }
+      body {
+        display: grid;
+        place-items: center;
+        min-height: 100dvh;
+        margin: 0;
+        padding: 0 16px;
+        background: var(--bg);
+        color: var(--text);
+        font-family:
+          system-ui,
+          -apple-system,
+          'Segoe UI',
+          sans-serif;
+        line-height: 1.5;
+        text-align: center;
+      }
+      main {
+        max-width: 26rem;
+      }
+      svg {
+        width: 56px;
+        height: 56px;
+      }
+      h1 {
+        margin: 16px 0 8px;
+        font-family: Georgia, serif;
+        font-size: 1.6rem;
+      }
+      p {
+        margin: 0 0 24px;
+        color: var(--muted);
+      }
+      button {
+        min-height: 44px;
+        padding: 0 20px;
+        border: 0;
+        border-radius: 8px;
+        background: var(--accent);
+        color: var(--accent-contrast);
+        font: inherit;
+        font-weight: 600;
+        cursor: pointer;
+      }
+    </style>
+  </head>
+  <body>
+    <main>
+      <svg aria-hidden="true" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32">
+        <rect width="32" height="32" rx="7" fill="#1f5c7a" />
+        <g fill="#f7f5f0">
+          <rect x="7" y="7" width="5" height="5" rx="1" />
+          <rect x="13.5" y="7" width="5" height="5" rx="1" />
+          <rect x="20" y="7" width="5" height="5" rx="1" />
+          <rect x="7" y="13.5" width="5" height="5" rx="1" />
+          <rect x="13.5" y="13.5" width="5" height="5" rx="1" />
+          <rect x="20" y="13.5" width="5" height="5" rx="1" />
+          <rect x="7" y="20" width="5" height="5" rx="1" />
+          <rect x="13.5" y="20" width="5" height="5" rx="1" />
+        </g>
+        <rect
+          x="20.5"
+          y="20.5"
+          width="4"
+          height="4"
+          rx="1"
+          fill="none"
+          stroke="#f7f5f0"
+          stroke-dasharray="1.5 1"
+        />
+      </svg>
+      <h1>You’re offline</h1>
+      <p>
+        unIQo needs an internet connection. If you were taking the test, reconnect and try again:
+        you’ll return to the question you were on.
+      </p>
+      <button type="button" onclick="location.reload()">Try again</button>
+    </main>
+  </body>
+</html>
