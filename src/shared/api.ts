@@ -1,5 +1,5 @@
 import type { AreaResult, IqResult } from '../engine/scoring.js';
-import type { Area, PublicItem, Track } from '../engine/types.js';
+import type { Area, ItemContent, PublicItem, Track } from '../engine/types.js';
 
 /** Request and response shapes for the /api endpoints, shared by the server and the browser. */
 
@@ -63,6 +63,33 @@ export interface ResultView {
   total: number;
   normsVersion: number;
   retake: RetakeInfo;
+}
+
+/**
+ * not-reached: the section's time ran out before the question was shown. Its content is never
+ * sent, because an unseen question can still come up in a later test.
+ */
+export type ReviewOutcome = 'correct' | 'wrong' | 'skipped' | 'timed-out' | 'not-reached';
+
+export interface ReviewQuestion {
+  number: number;
+  area: Area;
+  outcome: ReviewOutcome;
+  /** Null for questions never shown. */
+  content: ItemContent | null;
+  /** The option the test-taker picked, or null if none. */
+  chosen: number | null;
+  /** The right option. Null for word questions, whose answers stay private (see DECISIONS.md). */
+  correct: number | null;
+  /** How to solve it, in plain language. Null wherever `correct` is. */
+  solution: string | null;
+  /** Why the chosen option is wrong, when there's something specific to say. */
+  note: string | null;
+}
+
+export interface ReviewView {
+  attemptId: string;
+  questions: ReviewQuestion[];
 }
 
 export interface TakerSummary {

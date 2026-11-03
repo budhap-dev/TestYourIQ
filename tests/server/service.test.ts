@@ -13,6 +13,7 @@ import {
   currentItem,
   finish,
   getResult,
+  getReview,
   getTaker,
   type Deps,
   type ItemPayload,
@@ -381,5 +382,80 @@ describe('finishing', () => {
     const done = await takeTest(30, allRight, { takerId });
     expect(await finish(deps, done.takerId, done.started.attemptId)).toEqual(done.result);
     expect(await getResult(deps, done.takerId, done.started.attemptId)).toEqual(done.result);
+  });
+});
+
+describe('answer review', () => {
+  it('is only available once the test is finished, and only to its taker', async () => {
+    const started = await createAttempt(deps, null, { age: 30, consentResearch: true });
+    const takerId = verifyTakerToken(started.takerToken, keys);
+    await expect(getReview(deps, takerId, started.attemptId)).rejects.toMatchObject({
+      status: 409,
+    });
+    const done = await takeTest(30, allRight, { takerId });
+    await expect(getReview(deps, 'someone-else', done.started.attemptId)).rejects.toMatchObject({
+      status: 404,
+    });
+    await expect(getReview(deps, null, done.started.attemptId)).rejects.toMatchObject({
+      status: 404,
+    });
+  });
+
+  it('shows each answer, and the right one with a solution except for word questions', async () => {
+    let n = 0;
+    // Wrong, skipped and right in turn.
+    const mixed: Strategy = (id, next) =>
+      [allWrong(id, next), null, allRight(id, next)][n++ % 3] ?? null;
+    const done = await takeTest(30, mixed);
+    const review = await getReview(deps, done.takerId, done.started.attemptId);
+    const rows = store.responses.get(done.started.attemptId) ?? [];
+
+    expect(review.questions).toHaveLength(32);
+    expect(review.questions.filter((q) => q.outcome === 'correct')).toHaveLength(
+      done.result.correct,
+    );
+    review.questions.forEach((q, i) => {
+      const row = rows[i];
+      const item = row && itemFromKey(row.itemKey);
+      if (!row || !item) throw new Error('missing item');
+      expect(q.number).toBe(i + 1);
+      expect(q.chosen).toBe(row.answerIndex);
+      expect(q.content).toEqual(item.content);
+      expect(q.outcome).toBe(
+        row.isCorrect ? 'correct' : row.answerIndex === null ? 'skipped' : 'wrong',
+      );
+      if (q.area === 'verbal') {
+        expect([q.correct, q.solution, q.note]).toEqual([null, null, null]);
+      } else {
+        expect(q.correct).toBe(item.answerIndex);
+        expect(q.solution).toBe(item.solution);
+      }
+    });
+    // Nothing that would let someone regenerate an item.
+    const wire = JSON.stringify(review);
+    expect(wire).not.toMatch(/"gen:|"bank:|itemKey|formSeed|explanation/);
+  });
+
+  it('never shows questions the taker didn’t reach', async () => {
+    const started = await createAttempt(deps, null, { age: 30, consentResearch: true });
+    const takerId = verifyTakerToken(started.takerToken, keys);
+    let step: Progress = { done: false, next: started.next };
+    // Let every section run out of time on its first question.
+    while (!step.done) {
+      tick(30 * 60 * 1000);
+      step = await answer(deps, takerId, started.attemptId, {
+        itemToken: step.next.token,
+        answerIndex: 0,
+        responseMs: 1000,
+      });
+    }
+    await finish(deps, takerId, started.attemptId);
+    const review = await getReview(deps, takerId, started.attemptId);
+    const notReached = review.questions.filter((q) => q.outcome === 'not-reached');
+    expect(review.questions.filter((q) => q.outcome === 'timed-out')).toHaveLength(4);
+    expect(notReached).toHaveLength(28);
+    for (const q of notReached) {
+      expect([q.content, q.chosen, q.correct, q.solution]).toEqual([null, null, null, null]);
+    }
   });
 });

@@ -7,6 +7,7 @@ import {
   currentItem,
   finish,
   getResult,
+  getReview,
   getTaker,
   type Deps,
 } from './service.js';
@@ -182,6 +183,12 @@ export const handleResult = (request: Request) =>
     return json(await getResult(d, takerFrom(request, d), attemptIdFrom(request)));
   });
 
+export const handleReview = (request: Request) =>
+  run(async () => {
+    const d = getDeps();
+    return json(await getReview(d, takerFrom(request, d), attemptIdFrom(request)));
+  });
+
 /** Route table used by the local dev server; Vercel routes by file path instead. */
 export const ROUTES: {
   method: string;
@@ -194,4 +201,5 @@ export const ROUTES: {
   { method: 'POST', pattern: /^\/api\/attempts\/[^/]+\/answer$/, handler: handleAnswer },
   { method: 'POST', pattern: /^\/api\/attempts\/[^/]+\/finish$/, handler: handleFinish },
   { method: 'GET', pattern: /^\/api\/attempts\/[^/]+\/result$/, handler: handleResult },
+  { method: 'GET', pattern: /^\/api\/attempts\/[^/]+\/review$/, handler: handleReview },
 ];

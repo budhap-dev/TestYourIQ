@@ -83,5 +83,9 @@ export function verbalItem(id: string): Item<VerbalContent> | null {
       entry.type === 'analogy'
         ? `${entry.stem[0]} : ${entry.stem[1]} :: ${entry.stem[2]} : ${entry.answer}`
         : `${entry.answer}: ${entry.reason}`,
+    solution:
+      entry.type === 'analogy'
+        ? `${entry.stem[0]} is to ${entry.stem[1]} as ${entry.stem[2]} is to ${entry.answer}.`
+        : `${entry.answer} is the odd one out: ${entry.reason}`,
   };
 }

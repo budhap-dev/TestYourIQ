@@ -43,6 +43,9 @@ test('every screen passes an automated WCAG 2.2 AA audit', async ({ page }) => {
   await audit(page, 'test');
   await takeTest(page);
   await audit(page, 'results');
+  await page.getByRole('link', { name: 'Review your answers' }).click();
+  await page.getByRole('button', { name: /All questions/ }).click();
+  await audit(page, 'review');
 });
 
 test('every control on the test screen is at least 44px for touch', async ({ page }) => {

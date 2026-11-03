@@ -20,6 +20,18 @@ test('takes the whole test and shows a complete result', async ({ page }) => {
   }
   await expect(page.getByText('An estimate, not a diagnosis')).toBeVisible();
 
+  // Review: missed questions with the right answer and how to solve them.
+  await page.getByRole('link', { name: 'Review your answers' }).click();
+  await expect(page.getByRole('heading', { name: /^You got \d+ of 32 right$/ })).toBeVisible();
+  await expect(page.getByText('How to solve it').first()).toBeVisible();
+  await expect(page.getByText(/^Option \d, the correct answer\.$/).first()).toBeAttached();
+  await page.getByRole('button', { name: /All questions/ }).click();
+  await expect(page.getByRole('heading', { name: /^Question \d+/ })).toHaveCount(32);
+  expect(await page.evaluate(() => document.documentElement.scrollWidth)).toBeLessThanOrEqual(
+    page.viewportSize()?.width ?? 0,
+  );
+  await page.getByRole('link', { name: 'Back to your result' }).click();
+
   // Results survive a reload.
   await page.reload();
   await expect(page.getByRole('heading', { name: /Estimated IQ/ })).toBeVisible();

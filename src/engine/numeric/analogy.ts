@@ -27,18 +27,37 @@ interface Rule {
   spacings: (q: number) => number[];
   xs: [number, number];
   name: string;
+  /** The rule in words, as an instruction ("multiply by 3"). */
+  words: string;
+  /** The working for one input, without the result ("7 × 3"). */
+  show: (x: number) => string;
 }
 
 const signed = (n: number) => (n > 0 ? `+ ${n}` : `− ${-n}`);
+const addOrSubtract = (n: number) => (n > 0 ? `add ${n}` : `subtract ${-n}`);
 
 const RULES: Record<Family, (rng: Rng) => Rule> = {
   add: (rng) => {
     const c = rng.int(2, 12);
-    return { f: (x) => x + c, spacings: () => [c], xs: [1, 20], name: `x + ${c}` };
+    return {
+      f: (x) => x + c,
+      spacings: () => [c],
+      xs: [1, 20],
+      name: `x + ${c}`,
+      words: `add ${c}`,
+      show: (x) => `${x} + ${c}`,
+    };
   },
   multiply: (rng) => {
     const c = rng.int(2, 6);
-    return { f: (x) => c * x, spacings: (q) => [q, c], xs: [2, 12], name: `${c}x` };
+    return {
+      f: (x) => c * x,
+      spacings: (q) => [q, c],
+      xs: [2, 12],
+      name: `${c}x`,
+      words: `multiply by ${c}`,
+      show: (x) => `${x} × ${c}`,
+    };
   },
   linear: (rng) => {
     const c = rng.int(2, 4);
@@ -48,9 +67,18 @@ const RULES: Record<Family, (rng: Rng) => Rule> = {
       spacings: () => [c, Math.abs(d)],
       xs: [2, 12],
       name: `${c}x ${signed(d)}`,
+      words: `multiply by ${c}, then ${addOrSubtract(d)}`,
+      show: (x) => `${x} × ${c} ${signed(d)}`,
     };
   },
-  square: () => ({ f: (x) => x * x, spacings: (q) => [q], xs: [2, 12], name: 'x²' }),
+  square: () => ({
+    f: (x) => x * x,
+    spacings: (q) => [q],
+    xs: [2, 12],
+    name: 'x²',
+    words: 'multiply the number by itself',
+    show: (x) => `${x} × ${x}`,
+  }),
   'square-plus': (rng) => {
     const c = rng.pick([-5, -4, -3, -2, -1, 1, 2, 3, 4, 5, 6]);
     return {
@@ -58,6 +86,8 @@ const RULES: Record<Family, (rng: Rng) => Rule> = {
       spacings: (q) => [q, Math.abs(c)],
       xs: [2, 10],
       name: `x² ${signed(c)}`,
+      words: `multiply the number by itself, then ${addOrSubtract(c)}`,
+      show: (x) => `${x} × ${x} ${signed(c)}`,
     };
   },
   'times-next': () => ({
@@ -65,8 +95,17 @@ const RULES: Record<Family, (rng: Rng) => Rule> = {
     spacings: (q) => [q],
     xs: [2, 12],
     name: 'x × (x + 1)',
+    words: 'multiply the number by the next number up',
+    show: (x) => `${x} × ${x + 1}`,
   }),
-  cube: () => ({ f: (x) => x ** 3, spacings: (q) => [q * q, q], xs: [2, 9], name: 'x³' }),
+  cube: () => ({
+    f: (x) => x ** 3,
+    spacings: (q) => [q * q, q],
+    xs: [2, 9],
+    name: 'x³',
+    words: 'multiply the number by itself, then by itself again',
+    show: (x) => `${x} × ${x} × ${x}`,
+  }),
   'square-plus-multiple': (rng) => {
     const c = rng.int(2, 5);
     return {
@@ -74,6 +113,8 @@ const RULES: Record<Family, (rng: Rng) => Rule> = {
       spacings: (q) => [q, c * q],
       xs: [2, 12],
       name: `x² + ${c}x`,
+      words: `multiply the number by itself, then add ${c} times the number`,
+      show: (x) => `${x} × ${x} + ${c} × ${x}`,
     };
   },
 };
@@ -138,6 +179,7 @@ export function generateNumberAnalogy(
       answerIndex: picked.answerIndex,
       irt: level.irt,
       explanation: rule.name,
+      solution: `The same rule turns each number on the left into the one on the right: ${rule.words}. For example, ${rule.show(pairs[0]?.[0] as number)} = ${pairs[0]?.[1]}. So for ${q}: ${rule.show(q)} = ${answer}.`,
     };
   }
   throw new Error(`number analogy generator failed for seed ${seed} at difficulty ${difficulty}`);
