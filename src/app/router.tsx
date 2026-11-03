@@ -4,6 +4,7 @@ import { Landing } from './routes/Landing';
 import { NotFound } from './routes/NotFound';
 import { Privacy } from './routes/Privacy';
 import { ResultsPage } from './routes/ResultsPage';
+import { ReviewPage } from './routes/ReviewPage';
 import { Setup } from './routes/Setup';
 import { TestPage } from './routes/TestPage';
 
@@ -26,6 +27,7 @@ export const routes: RouteObject[] = [
       { path: 'setup', element: <Setup /> },
       { path: 'test/:attemptId', element: <TestPage /> },
       { path: 'results/:attemptId', element: <ResultsPage /> },
+      { path: 'results/:attemptId/review', element: <ReviewPage /> },
       { path: 'privacy', element: <Privacy /> },
       ...devRoutes,
       { path: '*', element: <NotFound /> },

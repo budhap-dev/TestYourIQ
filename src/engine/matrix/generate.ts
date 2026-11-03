@@ -4,13 +4,19 @@ import type { Difficulty, IrtParams, Item } from '../types.js';
 import {
   ATTRS,
   ATTR_INFO,
+  COUNTS,
   ROTATABLE_SHAPES,
+  ROTATIONS,
+  SHADINGS,
+  SHAPES,
+  SIZES,
   cellSignature,
   toCell,
   type Attr,
   type CellValues,
   type MatrixContent,
 } from './model.js';
+import { describeCell } from './render.js';
 import { buildGrid, ruleFits, type Grid, type RuleSpec, type RuleType } from './rules.js';
 import { impliedValues } from './solve.js';
 
@@ -155,6 +161,102 @@ function describe(rules: RuleSpec[]): string {
     .join('; ');
 }
 
+const plural = (shape: string) => (shape === 'cross' ? 'crosses' : `${shape}s`);
+
+/** How each attribute is named in a solution, and how its values read. */
+interface AttrWords {
+  noun: string;
+  plural: string;
+  /** A value on its own ("solid", "3", "triangles"). */
+  value: (v: number) => string;
+  /** What a cell with that value is or has ("is solid", "has 3 shapes"). */
+  cell: (v: number) => string;
+}
+
+const shadingWord = (v: number) =>
+  SHADINGS[v] === 'outline' ? 'outlined' : (SHADINGS[v] as string);
+
+const WORDS: Record<Attr, AttrWords> = {
+  shape: {
+    noun: 'shape',
+    plural: 'shapes',
+    value: (v) => plural(SHAPES[v] as string),
+    cell: (v) => `has ${plural(SHAPES[v] as string)}`,
+  },
+  count: {
+    noun: 'number of shapes',
+    plural: 'numbers of shapes',
+    value: (v) => `${COUNTS[v]}`,
+    cell: (v) => `has ${COUNTS[v]} ${COUNTS[v] === 1 ? 'shape' : 'shapes'}`,
+  },
+  shading: {
+    noun: 'shading',
+    plural: 'shadings',
+    value: shadingWord,
+    cell: (v) => `is ${shadingWord(v)}`,
+  },
+  size: {
+    noun: 'size',
+    plural: 'sizes',
+    value: (v) => SIZES[v] as string,
+    cell: (v) => `is ${SIZES[v]}`,
+  },
+  rotation: {
+    noun: 'angle',
+    plural: 'angles',
+    value: (v) => `${ROTATIONS[v]}°`,
+    cell: (v) => `is turned ${ROTATIONS[v]}°`,
+  },
+};
+
+function progressionPhrase(attr: Attr, step: number): string {
+  const up = step > 0;
+  switch (attr) {
+    case 'count':
+      return up ? 'there is one more shape each time' : 'there is one fewer shape each time';
+    case 'size':
+      return up ? 'the shapes get bigger' : 'the shapes get smaller';
+    case 'shading':
+      return up
+        ? 'the shading gets darker (outlined, shaded, solid)'
+        : 'the shading gets lighter (solid, shaded, outlined)';
+    case 'rotation':
+      return `the shapes turn ${Math.abs(step) * 45}° ${up ? 'clockwise' : 'anticlockwise'} each time`;
+    case 'shape':
+      return 'the shape changes';
+  }
+}
+
+function ruleSentence(rule: RuleSpec, grid: Grid): string {
+  const w = WORDS[rule.attr];
+  const v = (r: number, c: number) => w.value(grid[r]?.[c] as number);
+  const missing = w.cell(grid[2]?.[2] as number);
+  switch (rule.type) {
+    case 'row-constant':
+      return `Each row keeps one ${w.noun}: ${v(0, 0)}, then ${v(1, 0)}, then ${v(2, 0)} on the bottom row. So the missing cell ${missing} too.`;
+    case 'distribute':
+      return `Each row has the same three ${w.plural} (${v(0, 0)}, ${v(0, 1)} and ${v(0, 2)}) in a different order. The bottom row already has ${v(2, 0)} and ${v(2, 1)}, so the missing cell ${missing}.`;
+    case 'progression': {
+      const phrase = progressionPhrase(rule.attr, rule.step ?? 0);
+      return `Along each row, ${phrase}. The bottom row goes ${v(2, 0)}, ${v(2, 1)}, so the missing cell ${missing}.`;
+    }
+    case 'fixed':
+      return '';
+  }
+}
+
+/** A plain-language walk-through, row rules first, then the answer. */
+function solve(rules: RuleSpec[], grids: Record<Attr, Grid>, answer: CellValues): string {
+  const changing = rules.filter((r) => r.type !== 'fixed');
+  return [
+    ...changing.map((r) => ruleSentence(r, grids[r.attr])),
+    changing.length < rules.length ? 'Everything else stays the same in every cell.' : '',
+    `So the answer is ${describeCell(toCell(answer))}.`,
+  ]
+    .filter(Boolean)
+    .join(' ');
+}
+
 function attempt(level: MatrixLevel, rng: Rng) {
   const ruleAttrs = pickRuleAttrs(level, rng);
   if (ruleAttrs.length !== level.ruleCount) return null;
@@ -226,6 +328,7 @@ function attempt(level: MatrixLevel, rng: Rng) {
     } as MatrixContent,
     answerIndex: order.indexOf(0),
     explanation: describe(rules.filter((r) => r.type !== 'fixed')),
+    solution: solve(rules, grids, answer),
   };
 }
 
@@ -244,6 +347,7 @@ export function generateMatrix(seed: number, difficulty: Difficulty): Item<Matri
         answerIndex: result.answerIndex,
         irt: level.irt,
         explanation: result.explanation,
+        solution: result.solution,
       };
     }
   }

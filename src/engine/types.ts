@@ -36,8 +36,13 @@ export interface Item<Content = ItemContent> {
   answerIndex: number;
   /** Seed IRT parameters, before calibration from real responses. */
   irt: IrtParams;
-  /** Human-readable description of the rules, for review and debugging. Never sent to clients. */
+  /** Short description of the rules, for debugging. Never sent to clients. */
   explanation: string;
+  /**
+   * How to solve it, in plain language, for the answer review after a test is finished.
+   * Never sent while the test is running.
+   */
+  solution: string;
 }
 
 /** Everything an item can show. Discriminated by `kind`. */

@@ -7,7 +7,7 @@ import { BLUEPRINTS } from '../src/engine/assembly';
 import { ageFromDateOfBirth } from '../src/features/test/age';
 import { PRACTICE } from '../src/features/test/practice';
 import { SECTION_SUMMARY } from '../src/features/test/sections';
-import { AREA_LABELS } from '../src/shared/api';
+import { AREA_LABELS, type ReviewQuestion, type ReviewView } from '../src/shared/api';
 import { peopleAged, percentileText, rangeText } from '../src/features/results/wording';
 
 describe('age from date of birth', () => {
@@ -105,5 +105,80 @@ describe('setup screen', () => {
     renderSetup();
     fireEvent.click(screen.getByRole('button', { name: /date of birth instead/ }));
     expect(screen.getByLabelText('Date of birth')).toHaveAttribute('type', 'date');
+  });
+});
+
+describe('answer review', () => {
+  const question = (
+    number: number,
+    outcome: ReviewQuestion['outcome'],
+    extra: Partial<ReviewQuestion> = {},
+  ): ReviewQuestion => ({
+    number,
+    area: 'numerical',
+    outcome,
+    content: { kind: 'series', terms: [2, 4, 6, 8, 10, 12], options: [12, 14, 16, 18] },
+    chosen: outcome === 'correct' ? 1 : outcome === 'wrong' ? 2 : null,
+    correct: 1,
+    solution: 'Each number is 2 more than the one before: 12 + 2 = 14.',
+    note: null,
+    ...extra,
+  });
+  const review: ReviewView = {
+    attemptId: '00000000-0000-4000-8000-000000000000',
+    questions: [
+      question(1, 'correct'),
+      question(2, 'wrong'),
+      question(3, 'skipped'),
+      question(4, 'wrong', {
+        area: 'verbal',
+        content: { kind: 'verbal', format: 'odd-one-out', options: ['a', 'b', 'c', 'd', 'e'] },
+        correct: null,
+        solution: null,
+      }),
+      question(5, 'not-reached', { content: null, correct: null, solution: null }),
+      question(6, 'not-reached', { content: null, correct: null, solution: null }),
+    ],
+  };
+
+  beforeEach(() => {
+    window.matchMedia = vi.fn().mockImplementation((query: string) => ({
+      matches: false,
+      media: query,
+      addEventListener: vi.fn(),
+      removeEventListener: vi.fn(),
+    }));
+    globalThis.fetch = vi.fn().mockResolvedValue(new Response(JSON.stringify(review)));
+  });
+
+  const renderReview = () =>
+    render(
+      <ThemeProvider>
+        <RouterProvider
+          router={createMemoryRouter(routes, {
+            initialEntries: [`/results/${review.attemptId}/review`],
+          })}
+        />
+      </ThemeProvider>,
+    );
+
+  it('shows missed questions with the right answer and how to solve them', async () => {
+    renderReview();
+    expect(await screen.findByRole('heading', { name: 'You got 1 of 6 right' })).toBeVisible();
+    expect(screen.queryByRole('heading', { name: /Question 1\b/ })).toBeNull();
+    expect(screen.getByRole('heading', { name: /Question 2/ })).toBeVisible();
+    expect(screen.getAllByText('Option 2, the correct answer.')).toHaveLength(2); // 2 and 3
+    expect(screen.getAllByText('Option 3, your answer, not correct.')).toHaveLength(2); // 2 and 4
+    expect(screen.getAllByText(/12 \+ 2 = 14/)).toHaveLength(2); // questions 2 and 3
+    expect(screen.getByText(/Questions 5–6/)).toBeVisible();
+
+    // Word questions: marked, but no answer or solution.
+    const words = screen.getByRole('heading', { name: /Question 4/ }).closest('li');
+    expect(words).not.toHaveTextContent('Correct');
+    expect(words).not.toHaveTextContent('How to solve it');
+
+    fireEvent.click(screen.getByRole('button', { name: /All questions/ }));
+    expect(screen.getByRole('heading', { name: /Question 1\b/ })).toBeVisible();
+    expect(screen.getByText('Option 2, your answer, correct.')).toBeInTheDocument();
   });
 });

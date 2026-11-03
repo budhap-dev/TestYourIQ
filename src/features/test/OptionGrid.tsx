@@ -1,12 +1,23 @@
 import type { ReactNode } from 'react';
 import styles from './options.module.css';
 
+/** How an option is marked in the answer review. */
+export type OptionMark = 'correct' | 'chosen-right' | 'chosen-wrong';
+
+const MARK_TEXT: Record<OptionMark, { icon: string; text: string; spoken: string }> = {
+  correct: { icon: '✓', text: 'Correct', spoken: 'the correct answer' },
+  'chosen-right': { icon: '✓', text: 'Your pick', spoken: 'your answer, correct' },
+  'chosen-wrong': { icon: '✗', text: 'Your pick', spoken: 'your answer, not correct' },
+};
+
 export interface ChoiceProps {
   selected: number | null;
   onSelect: (index: number) => void;
   disabled?: boolean | undefined;
   /** Dev preview only: outline this option. */
   highlight?: number | null | undefined;
+  /** Answer review: show options read-only, with these marks. */
+  marks?: Partial<Record<number, OptionMark>> | undefined;
 }
 
 interface OptionGridProps extends ChoiceProps {
@@ -24,7 +35,46 @@ export function OptionGrid({
   onSelect,
   disabled,
   highlight,
+  marks,
 }: OptionGridProps) {
+  if (marks) {
+    return (
+      <div
+        className={styles.options}
+        data-layout={layout}
+        data-count={options.length}
+        data-review=""
+        role="group"
+        aria-label={legend}
+      >
+        <p className={styles.legend} aria-hidden="true">
+          {legend}
+        </p>
+        {options.map((o, i) => {
+          const mark = marks[i];
+          return (
+            <div key={i} className={styles.option} data-mark={mark}>
+              <span className={styles.number} aria-hidden="true">
+                {i + 1}
+              </span>
+              <span className="visually-hidden">
+                Option {i + 1}
+                {layout === 'text' ? '' : `: ${o.label}`}
+                {mark ? `, ${MARK_TEXT[mark].spoken}` : ''}.
+              </span>
+              {layout === 'text' ? <span aria-hidden="true">{o.content}</span> : o.content}
+              {mark && (
+                <span className={styles.mark} aria-hidden="true">
+                  {MARK_TEXT[mark].icon} {MARK_TEXT[mark].text}
+                </span>
+              )}
+            </div>
+          );
+        })}
+      </div>
+    );
+  }
+
   return (
     <fieldset className={styles.options} data-layout={layout} data-count={options.length}>
       <legend className={styles.legend}>{legend}</legend>

@@ -4,6 +4,7 @@ import type {
   AttemptStarted,
   Progress,
   ResultView,
+  ReviewView,
   TakerSummary,
 } from '../shared/api';
 
@@ -86,4 +87,5 @@ export const api = {
     request<Progress>('POST', `/attempts/${id}/answer`, body),
   finish: (id: string) => request<ResultView>('POST', `/attempts/${id}/finish`),
   result: (id: string) => request<ResultView>('GET', `/attempts/${id}/result`),
+  review: (id: string) => request<ReviewView>('GET', `/attempts/${id}/review`),
 };

@@ -74,7 +74,9 @@ describe('public items', () => {
         'explanation',
         'irt',
         'reason',
+        'solution',
         item.explanation,
+        item.solution,
       ]) {
         expect(json).not.toContain(secret);
       }

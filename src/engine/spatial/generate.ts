@@ -45,6 +45,13 @@ export const SPATIAL_LEVELS: Record<Difficulty, SpatialLevel> = {
 };
 
 const MAX_ATTEMPTS = 300;
+
+const SOLUTIONS: Record<SpatialTask, (turned: boolean) => string> = {
+  rotate: () =>
+    'The answer is the same shape, only turned. Each of the others is either flipped over (a mirror image) or has a square in a different place, so no amount of turning makes it match.',
+  mirror: (turned) =>
+    `The answer is the shape flipped over, as it would look in a mirror${turned ? ', then turned' : ''}. Each of the others is either not flipped (just the same shape${turned ? ' turned' : ''}) or has a square in a different place.`,
+};
 const key = ([x, y]: [number, number]) => `${x},${y}`;
 
 function pickMoves(shape: Cells, count: number, near: boolean, rng: Rng): Move[] | null {
@@ -114,6 +121,7 @@ function attempt(task: SpatialTask, level: SpatialLevel, rng: Rng) {
     } as SpatialContent,
     answerIndex: order.indexOf(correct),
     explanation: `${task}: ${level.cells} squares, ${moves.length} changed square(s)${turn ? ', options turned' : ''}`,
+    solution: SOLUTIONS[task](turn),
   };
 }
 
@@ -137,6 +145,7 @@ function generateSpatial(
         answerIndex: result.answerIndex,
         irt: level.irt,
         explanation: result.explanation,
+        solution: result.solution,
       };
     }
   }

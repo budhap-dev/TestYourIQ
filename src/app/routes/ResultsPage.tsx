@@ -131,6 +131,19 @@ export function ResultsPage() {
         </p>
       </section>
 
+      <section className={styles.card} aria-labelledby="answers">
+        <h2 id="answers">Your answers</h2>
+        <p>
+          You got {result.correct} of {result.total} questions right. See which ones you missed, the
+          right answers and how to work them out.
+        </p>
+        <div>
+          <ButtonLink to={`/results/${result.attemptId}/review`} variant="secondary">
+            Review your answers
+          </ButtonLink>
+        </div>
+      </section>
+
       <section className={styles.explain} aria-labelledby="meaning">
         <h2 id="meaning">What this means</h2>
         <ul>

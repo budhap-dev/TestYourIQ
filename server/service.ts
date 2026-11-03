@@ -29,6 +29,7 @@ import {
   type Item,
   type Track,
 } from '../src/engine/types.js';
+import { whyWrong } from '../src/engine/review.js';
 import { VERBAL_BANK, verbalItem } from '../src/engine/verbal/bank.js';
 import type {
   AttemptStarted,
@@ -36,6 +37,9 @@ import type {
   PreviousResult,
   Progress,
   ResultView,
+  ReviewOutcome,
+  ReviewQuestion,
+  ReviewView,
   SectionInfo,
   TakerSummary,
 } from '../src/shared/api.js';
@@ -634,12 +638,60 @@ export async function getResult(
   });
 }
 
+function outcomeOf(r: ResponseRow): ReviewOutcome {
+  if (!r.presented) return 'not-reached';
+  if (r.isCorrect) return 'correct';
+  if (r.timedOut) return 'timed-out';
+  return r.answerIndex === null ? 'skipped' : 'wrong';
+}
+
+/** Areas whose answers are never revealed: their items come from a small fixed bank. */
+const PRIVATE_ANSWERS = new Set(['verbal']);
+
+function reviewQuestion(r: ResponseRow): ReviewQuestion {
+  const outcome = outcomeOf(r);
+  const base = { number: r.position + 1, area: r.area, outcome };
+  const none = { content: null, chosen: null, correct: null, solution: null, note: null };
+  if (outcome === 'not-reached') return { ...base, ...none };
+  const item = itemFromKey(r.itemKey);
+  if (!item) return { ...base, ...none, chosen: r.answerIndex };
+  const open = !PRIVATE_ANSWERS.has(item.area);
+  return {
+    ...base,
+    content: item.content,
+    chosen: r.answerIndex,
+    correct: open ? item.answerIndex : null,
+    solution: open ? item.solution : null,
+    note: open ? whyWrong(item, r.answerIndex) : null,
+  };
+}
+
+/** Every question with the test-taker's answer and, where allowed, the right one. */
+export async function getReview(
+  deps: Deps,
+  takerId: string | null,
+  attemptId: string,
+): Promise<ReviewView> {
+  return deps.store.transaction(async (tx) => {
+    const attempt = await loadOwned(tx, attemptId, takerId);
+    if (attempt.status !== 'completed') {
+      throw new ApiError(409, 'not_finished', 'This test has not been finished.');
+    }
+    const responses = await tx.listResponses(attempt.id);
+    return {
+      attemptId: attempt.id,
+      questions: [...responses].sort((a, b) => a.position - b.position).map(reviewQuestion),
+    };
+  });
+}
+
 export type {
   AttemptStarted,
   ItemPayload,
   PreviousResult,
   Progress,
   ResultView,
+  ReviewView,
   SectionInfo,
   TakerSummary,
 } from '../src/shared/api.js';

@@ -108,7 +108,7 @@ function shapeNode(
 }
 
 export function renderCell(cell: Cell): SvgNode {
-  const fill =
+  const fill: Record<string, string | number> =
     cell.shading === 'solid'
       ? { fill: 'currentColor' }
       : cell.shading === 'shaded'

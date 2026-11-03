@@ -72,17 +72,18 @@ addresses, and age is stored in whole years.
 All endpoints are JSON, `no-store`, and identify the test-taker by an HTTP-only signed cookie
 (`uniqo_taker`), or by the same signed token sent as an `x-taker` header from localStorage.
 
-| Method | Path                       | Body                                                        | Returns                                                      |
-| ------ | -------------------------- | ----------------------------------------------------------- | ------------------------------------------------------------ |
-| `GET`  | `/api/me`                  |                                                             | Earlier results for this browser, for the retake notice      |
-| `POST` | `/api/attempts`            | `{ age, consentResearch }`                                  | Attempt id, sections, retake info, first item                |
-| `GET`  | `/api/attempts/:id`        |                                                             | The current item again (after a reload), or `{ done: true }` |
-| `POST` | `/api/attempts/:id/answer` | `{ itemToken, answerIndex \| null, responseMs, timedOut? }` | Next item, or `{ done: true }`                               |
-| `POST` | `/api/attempts/:id/finish` |                                                             | Results                                                      |
-| `GET`  | `/api/attempts/:id/result` |                                                             | Results (reload-safe)                                        |
+| Method | Path                       | Body                                                        | Returns                                                                                                                |
+| ------ | -------------------------- | ----------------------------------------------------------- | ---------------------------------------------------------------------------------------------------------------------- |
+| `GET`  | `/api/me`                  |                                                             | Earlier results for this browser, for the retake notice                                                                |
+| `POST` | `/api/attempts`            | `{ age, consentResearch }`                                  | Attempt id, sections, retake info, first item                                                                          |
+| `GET`  | `/api/attempts/:id`        |                                                             | The current item again (after a reload), or `{ done: true }`                                                           |
+| `POST` | `/api/attempts/:id/answer` | `{ itemToken, answerIndex \| null, responseMs, timedOut? }` | Next item, or `{ done: true }`                                                                                         |
+| `POST` | `/api/attempts/:id/finish` |                                                             | Results                                                                                                                |
+| `GET`  | `/api/attempts/:id/result` |                                                             | Results (reload-safe)                                                                                                  |
+| `GET`  | `/api/attempts/:id/review` |                                                             | Each question with your answer and, except for word questions, the right one and how to solve it (finished tests only) |
 
 Items carry an encrypted, short-lived `itemToken`; the client never sees item keys, seeds or
-answers. A test-taker can start at most 5 attempts an hour.
+answers while a test is running. A test-taker can start at most 5 attempts an hour.
 
 ## Calibration
 
